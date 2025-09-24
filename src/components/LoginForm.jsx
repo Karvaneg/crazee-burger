@@ -25,6 +25,7 @@ export default function LoginForm() {
                 type="text" 
                 placeholder="Entrez votre prénom..." 
                 required/>
+            <button>Accéder à votre espace</button>
         </form>
     );
 }
