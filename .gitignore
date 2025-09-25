@@ -7,19 +7,52 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
-node_modules
-dist
-dist-ssr
+# Dependency directories
+node_modules/
+package-lock.json
+dist/
+dist-ssr/
 *.local
+
+# Build output
+build/
+.next/
+out/
+.cache/
+.tmp/
+
+# Testing
+coverage/
+*.lcov
 
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
-.idea
+.idea/
 .DS_Store
 *.suo
 *.ntvs*
 *.njsproj
 *.sln
 *.sw?
-.vercel
+
+# System files
+.DS_Store
+Thumbs.db
+
+# Env files
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Vercel / Netlify
+.vercel/
+.netlify/
+
+# Storybook
+storybook-static/
+
+# Misc
+*.tsbuildinfo
