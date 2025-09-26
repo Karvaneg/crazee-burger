@@ -28,9 +28,9 @@ export default function LoginForm() {
                 value={inputValue} 
                 onChange={handleChange} 
                 type="text" 
-                placeholder="Entrez votre prénom..." 
+                placeholder="Entrez votre prénom" 
                 required/>
-            <button>Accéder à votre espace</button>
+            <button>Accéder à mon espace</button>
         </LoginFormStyled>
     );
 }
