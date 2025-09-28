@@ -1,6 +1,9 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
+import { theme } from "../../../theme";
+import { BsPersonCircle } from "react-icons/bs";
+
 
 export default function LoginForm() {
 
@@ -22,14 +25,19 @@ export default function LoginForm() {
     //affichage (render)
     return (
         <LoginFormStyled action="submit" onSubmit={handleSubmit}>
-            <h1>Bienvenue chez nous !</h1>
-            <h2>Connectez vous</h2>
-            <input 
-                value={inputValue} 
-                onChange={handleChange} 
-                type="text" 
-                placeholder="Entrez votre prénom" 
-                required/>
+            <h2>Bienvenue chez nous !</h2>
+            <hr />
+            <h3>Connectez vous</h3>
+            <div className="input-with-icon">
+                <BsPersonCircle className="icon" />
+                <input 
+                    value={inputValue} 
+                    onChange={handleChange} 
+                    type="text" 
+                    placeholder="Entrez votre prénom" 
+                    required
+                />
+            </div>
             <button>Accéder à mon espace</button>
         </LoginFormStyled>
     );
@@ -37,36 +45,55 @@ export default function LoginForm() {
 
 //styles
 const LoginFormStyled = styled.form`
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 20px;
-    padding: 20px;
-    background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    width: 300px;
-    margin: auto;
+    
+    max-width: 500px;
+    min-width: 400px;
+    padding: 2.5rem 2rem;
+    border-radius: 5px;
+    margin: 0px auto;
+    font-family: 'Amatic SC', cursive;
 
-    h1 {
-        font-size: 24px;
-        margin-bottom: 10px;
-        color: #333;
+    hr {
+        border: 1.5px solid ${theme.colors.red};
+        margin-bottom: 40px;
+        width: 100%;
     }
 
     h2 {
-        font-size: 18px;
-        margin-bottom: 20px;
-        color: #666;
+        font-size: ${theme.fonts.P5};
+        color: white;
     }
 
-    input {
-        width: 100%;
-        padding: 10px;
-        border: 1px solid #ccc;
+    h3 {
+        font-size: ${theme.fonts.P4};
+        margin: 20px 10px 10px;
+        color: white;
+    }
+
+    .input-with-icon {
+        background-color: white;
         border-radius: 5px;
-        font-size: 16px;
+        display: flex;
+        align-items: center;
+        padding: 18px 24px;
+        margin: 18px 0;
+
+        .icon{
+            font-size: ${theme.fonts.P0};
+            color: ${theme.colors.greySemiDark};
+            margin-right: 8px;
+        }
+
+        input{
+            border: none;
+            font-size: ${theme.fonts.P0};
+            colors: ${theme.colors.dark};
+        }
+
+        &::placeholder {
+            background-color: white;
+            color: ${theme.colors.greyLight};
+        }
     }
 
     button {
