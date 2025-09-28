@@ -87,7 +87,8 @@ const LoginFormStyled = styled.form`
         input{
             border: none;
             font-size: ${theme.fonts.P0};
-            colors: ${theme.colors.dark};
+            color: ${theme.colors.dark};
+            width: 100%;
         }
 
         &::placeholder {
