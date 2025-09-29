@@ -64,29 +64,29 @@ const LoginFormStyled = styled.form`
     font-family: 'Open Sans', sans-serif;
 
     hr {
-        border: 1.5px solid ${theme.colors.red};
+        border: 1.5px solid ${theme.colors.loginLine};
         margin-bottom: 40px;
         width: 100%;
     }
 
     h2 {
         font-family: 'Amatic SC', cursive;
-        font-size: ${theme.fonts.P5};
-        color: white;
+        font-size: ${theme.fonts.size.P5};
+        color: ${theme.colors.white};
     }
 
     h3 {
         font-family: 'Amatic SC', cursive;
-        font-size: ${theme.fonts.P4};
+        font-size: ${theme.fonts.size.P4};
         margin: 20px 10px 10px;
-        color: white;
+        color: ${theme.colors.white};
     }
 
     .icon {
         display: flex;
         justify-content: center;
         align-items: center;
-        font-size: ${theme.fonts.P0};
+        font-size: ${theme.fonts.size.P0};
         margin-left: 10px;
     }
 `;

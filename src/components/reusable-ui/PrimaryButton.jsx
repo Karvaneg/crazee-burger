@@ -24,22 +24,22 @@ const PrimaryButtonStyled = styled.button`
     border-radius: ${theme.borderRadius.round};
     background-color: ${theme.colors.primary_burger};
     color: white;
-    font-size: ${theme.fonts.P0};
-    font-weight: ${theme.weights.heavy};
+    font-size: ${theme.fonts.size.P0};
+    font-weight: ${theme.fonts.weights.heavy};
     text-align: center;
     cursor: pointer;
 
     &:hover:not(:disabled) {
         background-color: white;
-        color: ${theme.colors.primary_burger};
-        border: 1px solid ${theme.colors.primary_burger};
+        color: ${theme.colors.primary};
+        border: 1px solid ${theme.colors.primary};
         transition: all 200ms ease-out;
     }
 
     &:active {
         color: white;
-        background-color: ${theme.colors.primary_burger};
-        border: 1px solid ${theme.colors.primary_burger};
+        background-color: ${theme.colors.primary};
+        border: 1px solid ${theme.colors.primary};
     }
 
     &:disabled {
