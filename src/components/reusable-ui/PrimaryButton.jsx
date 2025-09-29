@@ -20,9 +20,9 @@ const PrimaryButtonStyled = styled.button`
     text-decoration: none;
     line-height: 1;
     padding: 18px 24px;
-    border: 1px solid ${theme.colors.primary_burger};
+    border: 1px solid ${theme.colors.primary};
     border-radius: ${theme.borderRadius.round};
-    background-color: ${theme.colors.primary_burger};
+    background-color: ${theme.colors.primary};
     color: white;
     font-size: ${theme.fonts.size.P0};
     font-weight: ${theme.fonts.weights.heavy};

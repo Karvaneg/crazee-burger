@@ -33,29 +33,28 @@ export default function LoginForm() {
                 <hr />
                 <h3>Connectez vous</h3>
             </div> 
+            <div>
+                <TextInput 
+                //on hydrate le composant avec des props (de la data)
+                    value={inputValue} 
+                    onChange={handleChange} 
+                    placeholder={"Entrez votre prénom"} 
+                    required 
+                    Icon={<BsPersonCircle className="icon" />}
+                />
 
-            <TextInput 
-            //on hydrate le composant avec des props (de la data)
-                value={inputValue} 
-                onChange={handleChange} 
-                placeholder={"Entrez votre prénom"} 
-                required
-                Icon={<BsPersonCircle className="icon" />}
-            />
-
-            <PrimaryButton 
-            //on hydrate le composant avec des props (de la data)
-                label={"Accéder à mon espace"}
-                Icon={<IoChevronForward className="icon" />}
-            />
-            
+                <PrimaryButton 
+                //on hydrate le composant avec des props (de la data)
+                    label={"Accéder à mon espace"}
+                    Icon={<IoChevronForward className="icon" />}
+                />
+            </div>
         </LoginFormStyled>
     );
 }
 
 //styles
 const LoginFormStyled = styled.form`
-    
     max-width: 500px;
     min-width: 400px;
     padding: 2.5rem 2rem;
