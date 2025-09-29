@@ -59,7 +59,7 @@ const LoginFormStyled = styled.form`
     max-width: 500px;
     min-width: 400px;
     padding: 2.5rem 2rem;
-    border-radius: 5px;
+    border-radius: ${theme.borderRadius.round};
     margin: 0px auto;
     font-family: 'Open Sans', sans-serif;
 

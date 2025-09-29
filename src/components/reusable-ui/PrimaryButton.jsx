@@ -21,11 +21,11 @@ const PrimaryButtonStyled = styled.button`
     line-height: 1;
     padding: 18px 24px;
     border: 1px solid ${theme.colors.primary_burger};
-    border-radius: 5px;
+    border-radius: ${theme.borderRadius.round};
     background-color: ${theme.colors.primary_burger};
     color: white;
     font-size: ${theme.fonts.P0};
-    font-weight: 800;
+    font-weight: ${theme.weights.heavy};
     text-align: center;
     cursor: pointer;
 

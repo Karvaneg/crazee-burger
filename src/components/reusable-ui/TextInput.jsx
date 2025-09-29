@@ -17,7 +17,7 @@ export default function TextInput({ value, onChange, Icon, ...extraProps }) {
 
 const InputStyled = styled.div`
     background-color: white;
-    border-radius: 5px;
+    border-radius: ${theme.borderRadius.round};
     display: flex;
     align-items: center;
     padding: 18px 24px;
