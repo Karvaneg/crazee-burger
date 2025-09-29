@@ -1,0 +1,49 @@
+import styled from "styled-components";
+import { theme } from "../../theme";
+
+export default function PrimaryButton({ label, Icon }) {
+  return (
+    <PrimaryButtonStyled>
+        <span>{label}</span>
+        {Icon && Icon}
+    </PrimaryButtonStyled>
+  )
+}
+
+const PrimaryButtonStyled = styled.button`
+    width: 100%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    white-space: nowrap;
+    text-decoration: none;
+    line-height: 1;
+    padding: 18px 24px;
+    border: 1px solid ${theme.colors.primary_burger};
+    border-radius: 5px;
+    background-color: ${theme.colors.primary_burger};
+    color: white;
+    font-size: ${theme.fonts.P0};
+    font-weight: 800;
+    text-align: center;
+    cursor: pointer;
+
+    &:hover:not(:disabled) {
+        background-color: white;
+        color: ${theme.colors.primary_burger};
+        border: 1px solid ${theme.colors.primary_burger};
+        transition: all 200ms ease-out;
+    }
+
+    &:active {
+        color: white;
+        background-color: ${theme.colors.primary_burger};
+        border: 1px solid ${theme.colors.primary_burger};
+    }
+
+    &:disabled {
+        opacity: 0.6;
+        cursor: not-allowed;
+    }
+`

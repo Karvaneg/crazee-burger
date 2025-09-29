@@ -2,9 +2,10 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { theme } from "../../../theme";
-import { IoChevronForward } from "react-icons/io5";
 import { BsPersonCircle } from "react-icons/bs";
+import { IoChevronForward } from "react-icons/io5";
 import TextInput from "../../reusable-ui/TextInput";
+import PrimaryButton from "../../reusable-ui/PrimaryButton";
 
 
 export default function LoginForm() {
@@ -32,7 +33,9 @@ export default function LoginForm() {
                 <hr />
                 <h3>Connectez vous</h3>
             </div> 
+
             <TextInput 
+            //on hydrate le composant avec des props (de la data)
                 value={inputValue} 
                 onChange={handleChange} 
                 placeholder={"Entrez votre prénom"} 
@@ -40,10 +43,11 @@ export default function LoginForm() {
                 Icon={<BsPersonCircle className="icon" />}
             />
 
-            <button className="button-with-icon">
-                <span>Accéder à mon espace</span>
-                <IoChevronForward className="icon" />
-            </button>
+            <PrimaryButton 
+            //on hydrate le composant avec des props (de la data)
+                label={"Accéder à mon espace"}
+                Icon={<IoChevronForward className="icon" />}
+            />
             
         </LoginFormStyled>
     );
@@ -78,50 +82,12 @@ const LoginFormStyled = styled.form`
         color: white;
     }
 
-    .button-with-icon {
-        width: 100%;
-        display: inline-flex;
-        align-items: center;
+    .icon {
+        display: flex;
         justify-content: center;
-        position: relative;
-        white-space: nowrap;
-        text-decoration: none;
-        line-height: 1;
-        padding: 18px 24px;
-        border: 1px solid ${theme.colors.primary_burger};
-        border-radius: 5px;
-        background-color: ${theme.colors.primary_burger};
-        color: white;
+        align-items: center;
         font-size: ${theme.fonts.P0};
-        font-weight: 800;
-        text-align: center;
-        cursor: pointer;
-
-        &:hover:not(:disabled) {
-            background-color: white;
-            color: ${theme.colors.primary_burger};
-            border: 1px solid ${theme.colors.primary_burger};
-            transition: all 200ms ease-out;
-        }
-
-        &:active {
-            color: white;
-            background-color: ${theme.colors.primary_burger};
-            border: 1px solid ${theme.colors.primary_burger};
-        }
-
-        &:disabled {
-            opacity: 0.6;
-            cursor: not-allowed;
-        }
-
-        .icon {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: ${theme.fonts.P0};
-            margin-left: 10px;
-        }
+        margin-left: 10px;
     }
 `;
     
