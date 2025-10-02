@@ -1,10 +1,10 @@
 import styled from "styled-components"
 import { theme } from "../../theme"
 
-export default function Logo({ className }) {
+export default function Logo({ className, onLogoClick }) {
   return (
     // ici className de jsx/html pour le style
-    <LogoStyled className={className}>
+    <LogoStyled className={className} onClick={onLogoClick}>
       <h1>CRAZEE</h1>
       <img src="/images/logo-orange.png" alt="Logo-crazee-burger" />
       <h1>BURGER</h1>
