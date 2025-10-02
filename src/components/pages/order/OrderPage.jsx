@@ -30,7 +30,6 @@ const OrderPageStyled = styled.div`
   align-items: center;
 
   .container {
-    background: red;
     height: 95vh;
     width: 1400px;
     display: flex;
