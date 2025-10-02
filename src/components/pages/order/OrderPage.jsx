@@ -2,6 +2,7 @@ import { useParams } from "react-router-dom";
 import styled from "styled-components";
 import NavBar from "./NavBar";
 import Main from "./Main";
+import { theme } from "../../../theme";
 
 export default function OrderPage() {
 
@@ -34,6 +35,6 @@ const OrderPageStyled = styled.div`
     width: 1400px;
     display: flex;
     flex-direction: column;
-
+    border-radius: ${theme.borderRadius.extraRound};
   }
 `;
