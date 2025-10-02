@@ -1,4 +1,8 @@
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
+import styled from "styled-components";
+import NavBar from "./NavBar";
+import Main from "./Main";
+import { theme } from "../../../theme";
 
 export default function OrderPage() {
 
@@ -9,9 +13,28 @@ export default function OrderPage() {
 
   //affichage (render)
   return (
-    <>
-      <h1>Bonjour {username}</h1>
-      <Link to="/"><button>Déconnexion</button></Link>
-    </>
+    <OrderPageStyled>
+      <div className="container">
+        {/* on hydrate le composant avec des props (de la data) */}
+        <NavBar username={username} />
+        <Main />
+      </div>
+    </OrderPageStyled>
   )
 }
+
+const OrderPageStyled = styled.div`
+  background: ${theme.colors.primary};
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .container {
+    height: 95vh;
+    width: 1400px;
+    display: flex;
+    flex-direction: column;
+    border-radius: ${theme.borderRadius.extraRound};
+  }
+`;

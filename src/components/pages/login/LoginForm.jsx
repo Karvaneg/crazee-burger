@@ -61,6 +61,7 @@ const LoginFormStyled = styled.form`
     border-radius: ${theme.borderRadius.round};
     margin: 0px auto;
     font-family: 'Open Sans', sans-serif;
+    text-align: center;
 
     hr {
         border: 1.5px solid ${theme.colors.loginLine};
