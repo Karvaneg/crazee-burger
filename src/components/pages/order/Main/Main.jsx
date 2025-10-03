@@ -5,7 +5,7 @@ import Menu from "./Menu";
 export default function Main() {
   return (
     <MainStyled>
-      <div className="basket">Basket</div>
+      {/* <div className="basket">Basket</div> */}
       <Menu />
     </MainStyled>
   )
@@ -18,9 +18,13 @@ const MainStyled = styled.main`
   border-bottom-right-radius: ${theme.borderRadius.extraRound};
   flex: 1; // or you can also use this : height: calc(95vh - 10vh);
   display: grid;
-  grid-template-columns: 25% 1fr;
 
-  .basket {
-    border: 2px solid green;
-  }
+  // TODO : this code is for basket and menu layout
+  // grid-template-columns: 25% 1fr;
+  // this code is for only menu layout
+  grid-template-columns: 1fr;
+
+  // .basket {
+  //   border: 2px solid green;
+  // }
 `;
