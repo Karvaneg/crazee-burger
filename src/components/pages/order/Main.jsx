@@ -1,10 +1,14 @@
 import styled from "styled-components";
 import { theme } from "../../../theme";
+import Card from "./Card";
 
 export default function Main() {
   return (
     <MainStyled>
-        
+      <div className="basket">Basket</div>
+      <div className="menu">Menu
+        <Card />
+      </div>
     </MainStyled>
   )
 }
@@ -15,4 +19,13 @@ const MainStyled = styled.main`
   border-bottom-left-radius: ${theme.borderRadius.extraRound};
   border-bottom-right-radius: ${theme.borderRadius.extraRound};
   flex: 1; // or you can also use this : height: calc(95vh - 10vh);
+  display: grid;
+  grid-template-columns: 25% 1fr;
+
+  .basket {
+    border: 2px solid green;
+  }
+  .menu {
+    border: 2px solid blue;
+  }
 `;
