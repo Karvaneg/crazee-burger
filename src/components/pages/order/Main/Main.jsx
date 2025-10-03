@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import { theme } from "../../../theme";
-import Card from "./Card";
+import { theme } from "../../../../theme";
+import Card from "../Card";
 
 export default function Main() {
   return (
