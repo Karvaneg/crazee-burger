@@ -23,6 +23,7 @@ const MainStyled = styled.main`
   // grid-template-columns: 25% 1fr;
   // this code is for only menu layout
   grid-template-columns: 1fr;
+  overflow-y: scroll;
 
   // .basket {
   //   border: 2px solid green;
