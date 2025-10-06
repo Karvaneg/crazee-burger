@@ -1,10 +1,11 @@
 import styled from "styled-components";
 import Profile from "./Profile";
+import ToggleButton from "../../../../assets/ToggleButton";
 
 export default function NavbarRightSide({ username }) {
   return (
     <NavbarRightSideStyled>
-      {/* <div className="admin-button">Admin Button</div> */}
+      <ToggleButton className="admin-button"/>
       <Profile username={username} />
     </NavbarRightSideStyled>
   );
