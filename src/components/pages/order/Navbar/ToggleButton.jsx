@@ -1,5 +1,5 @@
 import styled from "styled-components"
-import { theme } from "../theme"
+import { theme } from "../../../../theme";
 
 export default function ToggleButton({
   isChecked,
@@ -27,7 +27,7 @@ export default function ToggleButton({
 }
 
 const ToggleButtonStyled = styled.div`
-  /* border: 1px solid red; */
+  border: 1px solid red;
 
   display: flex;
   margin-right: 10px;

@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import Profile from "./Profile";
-import ToggleButton from "../../../../assets/ToggleButton";
+import ToggleButton from "./ToggleButton";
+
 
 export default function NavbarRightSide({ username }) {
   return (
@@ -15,8 +16,6 @@ const NavbarRightSideStyled = styled.div`
     display: flex;
     align-items: center;
     padding-right: 50px;
-    // .admin-button {
-    //   background: lightcoral;
-    // }
+    
     
 `;
