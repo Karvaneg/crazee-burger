@@ -1,10 +1,10 @@
 import styled from "styled-components";
 import Profile from "./Profile";
-import ToggleButton from "./ToggleButton";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css"
 import { theme } from "../../../../theme";
 import { useState } from "react";
+import ToggleButton from "../../../reusable-ui/ToggleButton";
 
 
 export default function NavbarRightSide({ username, isChecked, onToggle }) {
@@ -32,9 +32,11 @@ export default function NavbarRightSide({ username, isChecked, onToggle }) {
 
   return (
     <NavbarRightSideStyled>
-      <ToggleButton
+      <ToggleButton 
        isChecked={isAdminMode}
-       onToggle={handleToggle} />
+       onToggle={handleToggle}
+       labelIfChecked="Désactiver le mode admin"
+       labelIfUnchecked="Activer le mode admin" />
       <Profile username={username} />
       <ToastContainer className="toaster" bodyClassName="body-toast" role="info" />
     </NavbarRightSideStyled>
