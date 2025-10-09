@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { theme } from "../../../../theme";
 import Menu from "./Menu";
-import Admin from "./Admin";
+import Admin from "./Admin/Admin";
 
 export default function Main() {
   return (
@@ -22,7 +22,6 @@ const MainStyled = styled.main`
   border-bottom-right-radius: ${theme.borderRadius.extraRound};
   height: calc(95vh - 10vh);
   display: grid;
-  border: 2px solid purple;
 
   // TODO : this code is for basket and menu layout
    grid-template-columns: 25% 1fr;

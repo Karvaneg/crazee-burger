@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { theme } from "../../../../../theme";
 
 export default function Admin() {
   return (
@@ -10,20 +11,23 @@ export default function Admin() {
 }
 
 const AdminStyled = styled.div`
-    border: 2px solid blue;
     position: absolute;
     bottom: 0;
     right: 0;
     left: 0;
     height: 250px;
-    
+    box-shadow: ${theme.shadows.subtle};
+    border: 1px solid ${theme.colors.greyLight};
+    background: ${theme.colors.white};
+
+
     .admin-tabs {
-        border: 2px solid red;
+      //  border: 2px solid red;
         
     }
 
     .admin-panel {
-        border: 2px solid orange;
+      //  border: 2px solid orange;
         
     }
 `;
