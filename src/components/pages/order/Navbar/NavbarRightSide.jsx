@@ -2,14 +2,16 @@ import styled from "styled-components";
 import Profile from "./Profile";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css"
-import { useState } from "react";
+import { useContext } from "react";
 import ToggleButton from "../../../reusable-ui/ToggleButton";
 import ToastAdmin from "./ToastAdmin";
+import OrderContext from "../../../../context/OrderContext";
 
 
 export default function NavbarRightSide({ username }) {
 
-  const [isAdminMode, setIsAdminMode] = useState(false);
+  const {isAdminMode, setIsAdminMode} = useContext(OrderContext);
+
 
   const handleToggle = () => {
     const newState = !isAdminMode;
