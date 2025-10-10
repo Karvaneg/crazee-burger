@@ -15,7 +15,7 @@ export default function Main() {
       <div className="menu-and-admin">
         <Menu />
         {/* {isAdminMode ? <Admin /> : null} */}
-        {/* COMMENT : Raccourci logique de la ligne du dessus qd null ou undefined */}
+        {/* @COMMENT : Raccourci logique de la ligne du dessus qd null ou undefined */}
         {isAdminMode && <Admin />}
       </div>
     </MainStyled>
