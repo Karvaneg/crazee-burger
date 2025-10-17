@@ -12,15 +12,14 @@ export const getTabsConfig = (currentTabSelected) => [
     {
       index: "add",
       label: "Ajouter un produit",
-      Icon: <AiOutlinePlus />,
-      onClick: () => selectTab("add"), 
-      className: currentTabSelected === "add" ? "is-active" : "",
+      Icon: <AiOutlinePlus />, 
     },
     {
       index: "edit",
       label: "Modifier un produit",
-      Icon: <MdModeEditOutline />,
-      onClick: () => selectTab("edit"), 
-      className: currentTabSelected === "edit" ? "is-active" : "",
+      Icon: <MdModeEditOutline />,      
     }
   ]
+
+  export const getTabSelected = (tabs, currentTabSelected) =>
+    tabs.find((tab) => tab.index === currentTabSelected)

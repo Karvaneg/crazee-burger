@@ -5,10 +5,6 @@ export default createContext({
     setIsAdminMode: () => {},
     isCollapsed: false,
     setIsCollapsed: () => {},
-    isEditSelected: false,
-    setIsEditSelected: () => {},
-    isAddSelected: false,
-    setIsAddSelected: () => {},
     currentTabSelected: "add",
     setcurrentTabSelected: () => {}
 })

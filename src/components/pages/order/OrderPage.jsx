@@ -10,10 +10,8 @@ export default function OrderPage() {
 
   //state
   const {username} = useParams();
-  const [isAdminMode, setIsAdminMode] = useState(false);
-  const [isCollapsed, setIsCollapsed ] = useState(false);
-  const [isAddSelected, setIsAddSelected] = useState(true)
-  const [isEditSelected, setIsEditSelected] = useState(false)
+  const [isAdminMode, setIsAdminMode] = useState(false)
+  const [isCollapsed, setIsCollapsed ] = useState(false)
   const [currentTabSelected, setcurrentTabSelected] = useState("add")
   
   //comportements
@@ -23,10 +21,6 @@ export default function OrderPage() {
     setIsAdminMode,
     isCollapsed,
     setIsCollapsed,
-    isEditSelected,
-    setIsEditSelected,
-    isAddSelected,
-    setIsAddSelected,
     currentTabSelected,
     setcurrentTabSelected,
   };
