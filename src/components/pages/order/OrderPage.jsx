@@ -14,6 +14,7 @@ export default function OrderPage() {
   const [isCollapsed, setIsCollapsed ] = useState(false);
   const [isAddSelected, setIsAddSelected] = useState(true)
   const [isEditSelected, setIsEditSelected] = useState(false)
+  const [currentTabSelected, setcurrentTabSelected] = useState("add")
   
   //comportements
 
@@ -25,7 +26,9 @@ export default function OrderPage() {
     isEditSelected,
     setIsEditSelected,
     isAddSelected,
-    setIsAddSelected
+    setIsAddSelected,
+    currentTabSelected,
+    setcurrentTabSelected,
   };
 
   //affichage (render)
