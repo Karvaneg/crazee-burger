@@ -52,7 +52,6 @@ const AdminTabsStyled = styled.div`
     display: flex;
     padding: 0 20px;
        
-    
     .is-active{
       background: ${theme.colors.background_dark};
       color: ${theme.colors.white};

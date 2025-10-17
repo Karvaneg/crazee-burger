@@ -14,8 +14,6 @@ export default function AdminPanel() {
   return (
     <AdminPanelStyled>
         {currentTabSelected ===  tabSelected.index && tabSelected.label}
-       
-        
     </AdminPanelStyled>
   )
 }
