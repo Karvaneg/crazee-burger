@@ -5,16 +5,27 @@ import { theme } from "../../../theme";
 import NavBar from "./Navbar/NavBar";
 import { useState } from "react";
 import OrderContext from "../../../context/OrderContext";
+import { fakeMenu } from "../../../fakeData/fakeMenu";
 
 export default function OrderPage() {
-
   //state
-  const {username} = useParams();
-  const [isAdminMode, setIsAdminMode] = useState(false)
-  const [isCollapsed, setIsCollapsed ] = useState(false)
-  const [currentTabSelected, setcurrentTabSelected] = useState("add")
-  
+  const { username } = useParams();
+  const [isAdminMode, setIsAdminMode] = useState(false);
+  const [isCollapsed, setIsCollapsed] = useState(false);
+  const [currentTabSelected, setCurrentTabSelected] = useState("add");
+  const [menu, setMenu] = useState(fakeMenu.LARGE);
+
   //comportements
+  const handleAddProduct = (newProduct) => {
+    // 1. Copy du state
+    const menuCopy = [...menu];
+
+    // 2. Manip du state
+    const menuUpdated = [newProduct, ...menuCopy];
+
+    // 3. Update du state
+    setMenu(menuUpdated);
+  };
 
   const OrderContextValue = {
     isAdminMode,
@@ -22,7 +33,10 @@ export default function OrderPage() {
     isCollapsed,
     setIsCollapsed,
     currentTabSelected,
-    setcurrentTabSelected,
+    setCurrentTabSelected,
+    menu,
+    setMenu,
+    handleAddProduct,
   };
 
   //affichage (render)
@@ -36,7 +50,7 @@ export default function OrderPage() {
         </div>
       </OrderPageStyled>
     </OrderContext.Provider>
-  )
+  );
 }
 
 const OrderPageStyled = styled.div`

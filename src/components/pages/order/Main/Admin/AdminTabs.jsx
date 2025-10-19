@@ -7,24 +7,23 @@ import OrderContext from "../../../../../context/OrderContext";
 import { getTabsConfig } from "./getTabsConfig";
 
 export default function AdminTabs() {
-
   const {
-    isCollapsed, 
-    setIsCollapsed, 
+    isCollapsed,
+    setIsCollapsed,
     currentTabSelected,
-    setcurrentTabSelected
-  } = useContext(OrderContext)
+    setCurrentTabSelected,
+  } = useContext(OrderContext);
 
-  const handleClick = () => { 
+  const handleClick = () => {
     setIsCollapsed(!isCollapsed);
-  }
+  };
 
   const selectTab = (tabSelected) => {
-    setIsCollapsed(false) // Ouvre moi le panel dans tous les cas
-    setcurrentTabSelected(tabSelected) // Réactualise l'onglet sélectionné
-  }
+    setIsCollapsed(false); // Ouvre moi le panel dans tous les cas
+    setCurrentTabSelected(tabSelected); // Réactualise l'onglet sélectionné
+  };
 
-  const tabs = getTabsConfig(currentTabSelected)
+  const tabs = getTabsConfig(currentTabSelected);
 
   return (
     <AdminTabsStyled>
@@ -42,23 +41,23 @@ export default function AdminTabs() {
             onClick={() => selectTab(tab.index)}
             className={currentTabSelected === tab.index ? "is-active" : ""}
           />
-        )
+        );
       })}
     </AdminTabsStyled>
-  )
+  );
 }
 
 const AdminTabsStyled = styled.div`
-    display: flex;
-    padding: 0 20px;
-       
-    .is-active{
-      background: ${theme.colors.background_dark};
-      color: ${theme.colors.white};
-      border-color: ${theme.colors.background_dark};
-    }
+  display: flex;
+  padding: 0 20px;
 
-    button{
-      margin-left: 1px;
-    }
+  .is-active {
+    background: ${theme.colors.background_dark};
+    color: ${theme.colors.white};
+    border-color: ${theme.colors.background_dark};
+  }
+
+  button {
+    margin-left: 1px;
+  }
 `;

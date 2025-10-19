@@ -23,8 +23,5 @@ const AdminPanelStyled = styled.div`
     box-shadow: ${theme.shadows.subtle};
     border: 1px solid ${theme.colors.greyLight};
     background: ${theme.colors.white};
-    color: black;    
-    display: flex;
-    align-items: flex-start;
-    padding: 25px 30px 20px 60px;
+    padding: 30px 5%;
 `;
