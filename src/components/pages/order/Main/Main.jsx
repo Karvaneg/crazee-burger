@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 import styled from "styled-components";
 import { theme } from "../../../../theme";
-import Menu from "./Menu";
+import Menu from "./Menu/Menu";
 import Admin from "./Admin/Admin";
 import { useContext } from "react";
 import OrderContext from "../../../../context/OrderContext";

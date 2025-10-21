@@ -1,8 +1,10 @@
 import styled from "styled-components";
-import { formatPrice } from "../../../../utils/maths";
-import Card from "../../../reusable-ui/Card";
+import { formatPrice } from "../../../../../utils/maths";
+import Card from "../../../../reusable-ui/Card";
 import { useContext } from "react";
-import OrderContext from "../../../../context/OrderContext";
+import OrderContext from "../../../../../context/OrderContext";
+import EmptyMenuAdmin from "./EmptyMenuAdmin";
+import EmptyMenuClient from "./EmptyMenuClient";
 
 const IMAGE_BY_DEFAULT = "/images/coming-soon.png";
 
@@ -19,8 +21,11 @@ export default function Menu() {
   if (menu.length === 0)
     return (
       <div>
-        <span>Pas de produit</span>
-        <button onClick={resetMenu}>Générer de nouveaux produits</button>
+        {isAdminMode ? (
+          <EmptyMenuAdmin resetMenu={resetMenu} />
+        ) : (
+          <EmptyMenuClient />
+        )}
       </div>
     );
 
