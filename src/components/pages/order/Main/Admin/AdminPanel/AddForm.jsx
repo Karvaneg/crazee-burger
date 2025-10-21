@@ -28,15 +28,24 @@ export default function AddForm() {
       // price: newProduct.price,
       // ces 3 lignes peuvent être remplacées tout simplement par :
       ...newProduct, //(dynamic property name)
-      id: new Date().getTime(),
+      id: crypto.randomUUID(), //évite de devoir importer une librairie pour pouvoir utiliser UUID
     };
     handleAddProduct(newProductToAdd);
   };
 
   const handleChange = (e) => {
-    const newValue = e.target.value;
-    const nameInput = e.target.name;
-    setNewProduct({ ...newProduct, [nameInput]: newValue });
+    // const newValue = e.target.value;
+    // const nameInput = e.target.name;
+    // setNewProduct({ ...newProduct, [nameInput]: newValue });
+
+    // OU
+
+    // const { name, value } = e.target; //ici on déstructure
+    // setNewProduct({ ...newProduct, [name]: value });
+
+    // OU
+
+    setNewProduct({ ...newProduct, [e.target.name]: e.target.value });
   };
 
   return (
