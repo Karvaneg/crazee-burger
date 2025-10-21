@@ -5,6 +5,7 @@ import { BsFillCameraFill } from "react-icons/bs";
 import { MdOutlineEuro } from "react-icons/md";
 import { useContext, useState } from "react";
 import OrderContext from "../../../../../../context/OrderContext";
+import { FiCheck } from "react-icons/fi";
 
 const EMPTY_PRODUCT = {
   id: "",
@@ -18,6 +19,7 @@ export default function AddForm() {
   const { handleAddProduct } = useContext(OrderContext);
 
   const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT);
+  const [isSubmitted, setIsSubmitted] = useState(false);
 
   // comportements
   const handleSubmit = (e) => {
@@ -32,6 +34,8 @@ export default function AddForm() {
     };
     handleAddProduct(newProductToAdd);
     setNewProduct(EMPTY_PRODUCT);
+
+    displaySuccessMessage();
   };
 
   const handleChange = (e) => {
@@ -47,6 +51,13 @@ export default function AddForm() {
     // OU
 
     setNewProduct({ ...newProduct, [e.target.name]: e.target.value });
+  };
+
+  const displaySuccessMessage = () => {
+    setIsSubmitted(true);
+    setTimeout(() => {
+      setIsSubmitted(false);
+    }, 2000);
   };
 
   return (
@@ -91,8 +102,16 @@ export default function AddForm() {
           />
         </div>
       </div>
-      <div className="submitButton">
-        <button>Ajouter un nouveau produit au menu</button>
+      <div className="submit">
+        <button className="submit-button">
+          Ajouter un nouveau produit au menu
+        </button>
+        {isSubmitted && (
+          <div className="submit-message">
+            <FiCheck />
+            <span>Ajouté avec succès !</span>
+          </div>
+        )}
       </div>
     </AddFormStyled>
   );
@@ -151,25 +170,28 @@ const AddFormStyled = styled.form`
     }
   }
 
-  .submitButton {
+  .submit {
     grid-area: 4 / -2 / -1 / -1;
+    display: flex;
+    align-items: center;
 
-    button {
+    .submit-button {
       border: 1px solid #60bd4f;
       background: #60bd4f;
       color: white;
-      width: 275.25;
+      width: 50%;
       height: 34.046875;
       top: 129.14px;
       left: 235.14px;
       border-radius: 5px;
-      angle: 0 deg;
-      opacity: 1;
       border-width: 1px;
       padding-top: 10.52px;
       padding-right: 29.25px;
       padding-bottom: 9.53px;
       padding-left: 29px;
+    }
+    .submit-message {
+      color: #60bd4f;
     }
   }
 `;
