@@ -6,10 +6,7 @@ export default function Card({ title, imageSource, leftDescription }) {
   return (
     <CardStyled>
       <div className="image">
-        <img
-          src={imageSource ? imageSource : "/images/coming-soon.png"}
-          alt={title}
-        />
+        <img src={imageSource} alt={title} />
       </div>
       <div className="info-text">
         <div className="title">{title}</div>
