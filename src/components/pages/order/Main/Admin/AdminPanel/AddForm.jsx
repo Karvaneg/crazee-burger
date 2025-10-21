@@ -6,29 +6,38 @@ import { MdOutlineEuro } from "react-icons/md";
 import { useContext, useState } from "react";
 import OrderContext from "../../../../../../context/OrderContext";
 
+const EMPTY_PRODUCT = {
+  id: "",
+  imageSource: "",
+  title: "",
+  price: 0,
+};
+
 export default function AddForm() {
   // state
   const { handleAddProduct } = useContext(OrderContext);
 
-  const newProduct = {
-    id: new Date().getTime(),
-    imageSource: "/images/burger-bacon-egg.png",
-    title: "Burger Marie",
-    price: 5.598,
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    handleAddProduct(newProduct);
-  };
-
-  // const [title, setTitle] = useState("");
-  // const [imageSource, setImageSource] = useState(imageProductDefault);
-  // const [price, setPrice] = useState("0,00 €");
+  const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT);
 
   // comportements
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const newProductToAdd = {
+      // imageSource: newProduct.imageSource,
+      // title: newProduct.title,
+      // price: newProduct.price,
+      // ces 3 lignes peuvent être remplacées tout simplement par :
+      ...newProduct, //(dynamic property name)
+      id: new Date().getTime(),
+    };
+    handleAddProduct(newProductToAdd);
+  };
 
-  // affichage (render)
+  const handleChange = (e) => {
+    const newValue = e.target.value;
+    const nameInput = e.target.name;
+    setNewProduct({ ...newProduct, [nameInput]: newValue });
+  };
 
   return (
     <AddFormStyled onSubmit={handleSubmit}>
@@ -40,27 +49,33 @@ export default function AddForm() {
         <div>
           <FaHamburger />
           <input
+            name="title"
             type="text"
-            id=""
-            name=""
             placeholder="Nom du produit (ex: Super Burger)"
-            value=""
+            value={newProduct.title}
+            onChange={handleChange}
           />
         </div>
         <div>
           <BsFillCameraFill />
           <input
-            type="url"
             name="imageSource"
-            id="url"
+            type="url"
             placeholder="Lien URL d'une image (ex: https://la-photo-de-mon-produit.png)"
             pattern="https://.*"
-            value=""
+            value={newProduct.imageSource}
+            onChange={handleChange}
           />
         </div>
         <div>
           <MdOutlineEuro />
-          <input type="texte" name="price" placeholder="Prix" value="" />
+          <input
+            name="price"
+            type="texte"
+            placeholder="Prix"
+            value={newProduct.price ? newProduct.price : ""}
+            onChange={handleChange}
+          />
         </div>
       </div>
       <div className="submitButton">

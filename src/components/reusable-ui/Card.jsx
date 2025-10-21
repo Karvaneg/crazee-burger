@@ -5,20 +5,23 @@ import { theme } from "../../theme";
 export default function Card({ title, imageSource, leftDescription }) {
   return (
     <CardStyled>
-        <div className="image">
-          <img src={imageSource} alt={title} />
+      <div className="image">
+        <img
+          src={imageSource ? imageSource : "/images/coming-soon.png"}
+          alt={title}
+        />
+      </div>
+      <div className="info-text">
+        <div className="title">{title}</div>
+        <div className="description">
+          <div className="left-description">{leftDescription}</div>
+          <div className="right-description">
+            <PrimaryButton className={"primary-button"} label={"Ajouter"} />
+          </div>
         </div>
-        <div className="info-text">
-            <div className="title">{title}</div>
-            <div className="description">
-                <div className="left-description">{leftDescription}</div>
-                <div className="right-description">
-                  <PrimaryButton className={"primary-button"} label={"Ajouter"} />
-                </div>
-            </div>
-        </div>
+      </div>
     </CardStyled>
-  )
+  );
 }
 
 const CardStyled = styled.div`
