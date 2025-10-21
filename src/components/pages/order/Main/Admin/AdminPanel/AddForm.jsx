@@ -31,6 +31,7 @@ export default function AddForm() {
       id: crypto.randomUUID(), //évite de devoir importer une librairie pour pouvoir utiliser UUID
     };
     handleAddProduct(newProductToAdd);
+    setNewProduct(EMPTY_PRODUCT);
   };
 
   const handleChange = (e) => {
