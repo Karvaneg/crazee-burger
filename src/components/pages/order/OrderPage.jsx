@@ -16,12 +16,28 @@ export default function OrderPage() {
   const [menu, setMenu] = useState(fakeMenu.LARGE);
 
   //comportements
+  //Add Product
   const handleAddProduct = (newProduct) => {
     // 1. Copy du state
     const menuCopy = [...menu];
 
     // 2. Manip du state
     const menuUpdated = [newProduct, ...menuCopy];
+
+    // 3. Update du state
+    setMenu(menuUpdated);
+  };
+
+  //Delete Product
+  const handleDeleteProduct = (idOfProductToDelete) => {
+    // 1. Copy du state
+    const menuCopy = [...menu];
+
+    // 2. Manip du state
+    const menuUpdated = menuCopy.filter(
+      (product) => product.id !== idOfProductToDelete
+    );
+    console.log(menuUpdated);
 
     // 3. Update du state
     setMenu(menuUpdated);
@@ -36,6 +52,7 @@ export default function OrderPage() {
     setCurrentTabSelected,
     menu,
     handleAddProduct,
+    handleDeleteProduct,
   };
 
   //affichage (render)
