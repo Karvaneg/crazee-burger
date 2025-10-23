@@ -1,11 +1,12 @@
-/* eslint-disable no-unused-vars */
 import styled from "styled-components";
+import { theme } from "../../../../../../theme";
+import { FiCheck } from "react-icons/fi";
 import { FaHamburger } from "react-icons/fa";
 import { BsFillCameraFill } from "react-icons/bs";
 import { MdOutlineEuro } from "react-icons/md";
 import { useContext, useState } from "react";
 import OrderContext from "../../../../../../context/OrderContext";
-import { FiCheck } from "react-icons/fi";
+import TextInput from "../../../../../reusable-ui/TextInput";
 
 const EMPTY_PRODUCT = {
   id: "",
@@ -70,37 +71,36 @@ export default function AddForm() {
         )}
       </div>
       <div className="input-fields">
-        <div>
-          <FaHamburger />
-          <input
-            name="title"
-            type="text"
-            placeholder="Nom du produit (ex: Super Burger)"
-            value={newProduct.title}
-            onChange={handleChange}
-          />
-        </div>
-        <div>
-          <BsFillCameraFill />
-          <input
-            name="imageSource"
-            type="url"
-            placeholder="Lien URL d'une image (ex: https://la-photo-de-mon-produit.png)"
-            pattern="https://.*"
-            value={newProduct.imageSource}
-            onChange={handleChange}
-          />
-        </div>
-        <div>
-          <MdOutlineEuro />
-          <input
-            name="price"
-            type="texte"
-            placeholder="Prix"
-            value={newProduct.price ? newProduct.price : ""}
-            onChange={handleChange}
-          />
-        </div>
+        <TextInput
+          name="title"
+          type="text"
+          placeholder="Nom du produit (ex: Super Burger)"
+          value={newProduct.title}
+          onChange={handleChange}
+          Icon={<FaHamburger />}
+          version="minimalist"
+        />
+
+        <TextInput
+          name="imageSource"
+          type="url"
+          placeholder="Lien URL d'une image (ex: https://la-photo-de-mon-produit.png)"
+          pattern="https://.*"
+          value={newProduct.imageSource}
+          onChange={handleChange}
+          Icon={<BsFillCameraFill />}
+          version="minimalist"
+        />
+
+        <TextInput
+          name="price"
+          type="texte"
+          placeholder="Prix"
+          value={newProduct.price ? newProduct.price : ""}
+          onChange={handleChange}
+          Icon={<MdOutlineEuro />}
+          version="minimalist"
+        />
       </div>
       <div className="submit">
         <button className="submit-button">
@@ -123,6 +123,8 @@ const AddFormStyled = styled.form`
   grid-template-rows: repeat(4, 1fr);
   width: 70%;
   height: 100%;
+  grid-column-gap: 20px;
+  grid-row-gap: 8px;
 
   .image-preview {
     grid-area: 1 / 1 / 4 / 2;
@@ -138,14 +140,12 @@ const AddFormStyled = styled.form`
       height: 100%;
       width: 100%;
       display: flex;
-      -webkit-box-pack: center;
       justify-content: center;
-      -webkit-box-align: center;
       align-items: center;
-      border: 1px solid rgb(228, 229, 233);
+      border: 1px solid ${theme.colors.greyLight};
       line-height: 1.5;
-      color: rgb(147, 162, 177);
-      border-radius: 5px;
+      color: ${theme.colors.greySemiDark};
+      border-radius: ${theme.borderRadius.round};
     }
   }
 
@@ -154,20 +154,20 @@ const AddFormStyled = styled.form`
     display: grid;
     row-gap: 8px;
 
-    input {
-      background: #f5f5f7;
-      border-radius: 5px;
-      border: none;
-      width: 100%;
-      padding-top: 8px;
-      padding-right: 16px;
-      padding-bottom: 8px;
-      padding-left: 24px;
+    // .text-input {
+    //   background: #f5f5f7;
+    //   border-radius: 5px;
+    //   border: none;
+    //   width: 100%;
+    //   padding-top: 8px;
+    //   padding-right: 16px;
+    //   padding-bottom: 8px;
+    //   padding-left: 24px;
 
-      &::placeholder {
-        color: #a7a8ad;
-      }
-    }
+    //   &::placeholder {
+    //     color: #a7a8ad;
+    //   }
+    // }
   }
 
   .submit {
