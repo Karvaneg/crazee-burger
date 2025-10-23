@@ -1,43 +1,53 @@
 import styled from "styled-components";
+import Button from "../../../../reusable-ui/Button";
+import { theme } from "../../../../../theme";
 
-export default function EmptyMenuAdmin({ resetMenu }) {
+export default function EmptyMenuAdmin({ onReset }) {
   return (
     <EmptyMenuAdminStyled>
-      <span>Le menu est vide ?</span>
-      <span>Cliquez ci-dessous pour le réinitialiser</span>
-      <button onClick={resetMenu}>Générer de nouveaux produits</button>
+      <span className="title">Le menu est vide ?</span>
+      <span className="description">
+        Cliquez ci-dessous pour le réinitialiser
+      </span>
+      <Button
+        onClick={onReset}
+        label={"Générer de nouveaux produits"}
+        version="primary"
+      />
     </EmptyMenuAdminStyled>
   );
 }
 
 const EmptyMenuAdminStyled = styled.div`
-  font-family: Amatic SC;
-  font-weight: 700;
-  font-style: Bold;
-  font-size: 36px;
-  leading-trim: NONE;
-  line-height: 100%;
-  letter-spacing: 0%;
-  text-align: center;
-  vertical-align: middle;
+  background-color: ${theme.colors.background_white};
+  box-shadow: ${theme.shadows.strong};
+  border-bottom-right-radius: ${theme.borderRadius.extraRound};
+  height: 100%;
   display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  .title,
+  .description {
+    text-align: center;
+    font-family: "Amatic SC", cursive;
+    color: ${theme.colors.greyBlue};
+  }
+
+  .title {
+    font-size: ${theme.fonts.size.P4};
+    font-weight: ${theme.fonts.weights.semiBold};
+  }
+
+  .description {
+    font-size: ${theme.fonts.size.P4};
+    margin-top: 20px;
+  }
 
   button {
-    width: 224.046875;
-    height: 50;
-    angle: 0 deg;
-    opacity: 1;
-    top: 462.91px;
-    left: 587.97px;
-    border-radius: 5px;
-    border-width: 1px;
-    padding-top: 19px;
-    padding-right: 24.05px;
-    padding-bottom: 19px;
-    padding-left: 25px;
-    border: 1px solid #ff9f1b;
-    background: #ff9f1b;
-    color: white;
-    cursor: pointer;
+    margin-top: 30px;
+    font-size: ${theme.fonts.size.XS};
+    width: auto;
   }
 `;

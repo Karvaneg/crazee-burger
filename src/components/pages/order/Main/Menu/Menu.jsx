@@ -22,7 +22,7 @@ export default function Menu() {
     return (
       <div>
         {isAdminMode ? (
-          <EmptyMenuAdmin resetMenu={resetMenu} />
+          <EmptyMenuAdmin onReset={resetMenu} />
         ) : (
           <EmptyMenuClient />
         )}
