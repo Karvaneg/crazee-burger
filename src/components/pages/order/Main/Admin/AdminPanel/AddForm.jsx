@@ -163,7 +163,21 @@ const AddFormStyled = styled.form`
     align-items: center;
 
     .submit-message {
-      color: #60bd4f;
+      color: ${theme.colors.success};
+      margin-left: 5px;
+
+      .icon {
+        margin-left: 10px;
+        width: 1em;
+        height: 1em;
+        border: 1px solid ${theme.colors.success};
+        border-radius: 50%;
+        vertical-align: middle;
+      }
+      .message {
+        margin-left: 5px;
+        font-size: ${theme.fonts.size.SM};
+      }
     }
   }
 `;
