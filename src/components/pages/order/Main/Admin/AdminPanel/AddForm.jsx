@@ -7,6 +7,7 @@ import { MdOutlineEuro } from "react-icons/md";
 import { useContext, useState } from "react";
 import OrderContext from "../../../../../../context/OrderContext";
 import TextInput from "../../../../../reusable-ui/TextInput";
+import Button from "../../../../../reusable-ui/Button";
 
 const EMPTY_PRODUCT = {
   id: "",
@@ -103,9 +104,10 @@ export default function AddForm() {
         />
       </div>
       <div className="submit">
-        <button className="submit-button">
-          Ajouter un nouveau produit au menu
-        </button>
+        <Button
+          label={"Ajouter un nouveau produit au menu"}
+          version="success"
+        />
         {isSubmitted && (
           <div className="submit-message">
             <FiCheck />
@@ -176,19 +178,19 @@ const AddFormStyled = styled.form`
     align-items: center;
 
     .submit-button {
-      border: 1px solid #60bd4f;
-      background: #60bd4f;
-      color: white;
-      width: 50%;
-      height: 34.046875;
-      top: 129.14px;
-      left: 235.14px;
-      border-radius: 5px;
-      border-width: 1px;
-      padding-top: 10.52px;
-      padding-right: 29.25px;
-      padding-bottom: 9.53px;
-      padding-left: 29px;
+      // border: 1px solid #60bd4f;
+      // background: #60bd4f;
+      //  color: white;
+      //width: 50%;
+      // height: 34.046875;
+      // top: 129.14px;
+      // left: 235.14px;
+      // border-radius: 5px;
+      // border-width: 1px;
+      // padding-top: 10.52px;
+      // padding-right: 29.25px;
+      // padding-bottom: 9.53px;
+      // padding-left: 29px;
     }
     .submit-message {
       color: #60bd4f;

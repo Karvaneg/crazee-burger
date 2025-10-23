@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import PrimaryButton from "./PrimaryButton";
+import Button from "./Button";
 import { theme } from "../../theme";
 import { TiDelete } from "react-icons/ti";
 
@@ -20,7 +20,11 @@ export default function Card({
         <div className="description">
           <div className="left-description">{leftDescription}</div>
           <div className="right-description">
-            <PrimaryButton className={"primary-button"} label={"Ajouter"} />
+            <Button
+              className={"primary-button"}
+              label={"Ajouter"}
+              version="primary"
+            />
           </div>
         </div>
       </div>
@@ -107,8 +111,7 @@ const CardStyled = styled.div`
 
         .primary-button {
           font-size: ${theme.fonts.size.XS};
-          cursor: pointer;
-          padding: 12px;
+          padding: 12px 0px 12px 12px;
         }
       }
     }

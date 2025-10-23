@@ -5,7 +5,7 @@ import { theme } from "../../../theme";
 import { BsPersonCircle } from "react-icons/bs";
 import { IoChevronForward } from "react-icons/io5";
 import TextInput from "../../reusable-ui/TextInput";
-import PrimaryButton from "../../reusable-ui/PrimaryButton";
+import Button from "../../reusable-ui/Button";
 
 export default function LoginForm() {
   //state
@@ -43,10 +43,11 @@ export default function LoginForm() {
           version="normal"
         />
 
-        <PrimaryButton
+        <Button
           //on hydrate le composant avec des props (de la data)
           label={"Accéder à mon espace"}
           Icon={<IoChevronForward />}
+          version="primary"
         />
       </div>
     </LoginFormStyled>
