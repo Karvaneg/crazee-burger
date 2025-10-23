@@ -110,8 +110,8 @@ export default function AddForm() {
         />
         {isSubmitted && (
           <div className="submit-message">
-            <FiCheck />
-            <span>Ajouté avec succès !</span>
+            <FiCheck className="icon" />
+            <span className="message">Ajouté avec succès !</span>
           </div>
         )}
       </div>
@@ -155,21 +155,6 @@ const AddFormStyled = styled.form`
     grid-area: 1 / 2 / -2 / -1;
     display: grid;
     row-gap: 8px;
-
-    // .text-input {
-    //   background: #f5f5f7;
-    //   border-radius: 5px;
-    //   border: none;
-    //   width: 100%;
-    //   padding-top: 8px;
-    //   padding-right: 16px;
-    //   padding-bottom: 8px;
-    //   padding-left: 24px;
-
-    //   &::placeholder {
-    //     color: #a7a8ad;
-    //   }
-    // }
   }
 
   .submit {
@@ -177,21 +162,6 @@ const AddFormStyled = styled.form`
     display: flex;
     align-items: center;
 
-    .submit-button {
-      // border: 1px solid #60bd4f;
-      // background: #60bd4f;
-      //  color: white;
-      //width: 50%;
-      // height: 34.046875;
-      // top: 129.14px;
-      // left: 235.14px;
-      // border-radius: 5px;
-      // border-width: 1px;
-      // padding-top: 10.52px;
-      // padding-right: 29.25px;
-      // padding-bottom: 9.53px;
-      // padding-left: 29px;
-    }
     .submit-message {
       color: #60bd4f;
     }

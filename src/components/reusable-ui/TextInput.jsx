@@ -24,23 +24,17 @@ const TextInputStyled = styled.div`
 
   .icon {
     display: flex;
-    // justify-content: center;
-    // align-items: center;
     font-size: ${theme.fonts.SM};
-    // color: ${theme.colors.greyDark};
-    // margin-right: 13px;
     margin: 0 13px 0 8px;
   }
 
   input {
     border: none;
     font-size: ${theme.fonts.SM};
-    // color: ${theme.colors.dark};
     width: 100%;
     //font-family: "Open Sans", sans-serif;
 
     &::placeholder {
-      // background-color: ${theme.colors.white};
       // font-size: ${theme.fonts.SM};
       color: ${theme.colors.greyMedium};
     }
