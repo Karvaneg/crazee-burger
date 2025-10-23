@@ -6,6 +6,7 @@ import NavBar from "./Navbar/NavBar";
 import { useState } from "react";
 import OrderContext from "../../../context/OrderContext";
 import { fakeMenu } from "../../../fakeData/fakeMenu";
+import { EMPTY_PRODUCT } from "./Main/Admin/AdminPanel/AddForm";
 
 export default function OrderPage() {
   //state
@@ -14,6 +15,8 @@ export default function OrderPage() {
   const [isCollapsed, setIsCollapsed] = useState(false);
   const [currentTabSelected, setCurrentTabSelected] = useState("add");
   const [menu, setMenu] = useState(fakeMenu.LARGE);
+  // eslint-disable-next-line no-undef
+  const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT);
 
   //comportements
   //Add Product
@@ -59,6 +62,8 @@ export default function OrderPage() {
     handleAddProduct,
     handleDeleteProduct,
     resetMenu,
+    newProduct,
+    setNewProduct,
   };
 
   //affichage (render)

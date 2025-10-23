@@ -9,7 +9,8 @@ import OrderContext from "../../../../../../context/OrderContext";
 import TextInput from "../../../../../reusable-ui/TextInput";
 import Button from "../../../../../reusable-ui/Button";
 
-const EMPTY_PRODUCT = {
+// eslint-disable-next-line react-refresh/only-export-components
+export const EMPTY_PRODUCT = {
   id: "",
   imageSource: "",
   title: "",
@@ -18,9 +19,10 @@ const EMPTY_PRODUCT = {
 
 export default function AddForm() {
   // state
-  const { handleAddProduct } = useContext(OrderContext);
+  const { handleAddProduct, newProduct, setNewProduct } =
+    useContext(OrderContext);
 
-  const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT);
+  //const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT);
   const [isSubmitted, setIsSubmitted] = useState(false);
 
   // comportements
