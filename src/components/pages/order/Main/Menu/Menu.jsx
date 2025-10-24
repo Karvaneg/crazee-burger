@@ -40,6 +40,7 @@ export default function Menu() {
             leftDescription={formatPrice(price)}
             hasDeleteButton={isAdminMode}
             onDelete={() => handleDeleteProduct(id)}
+            hasSelectCard={isAdminMode}
           />
         );
       })}

@@ -9,9 +9,10 @@ export default function Card({
   leftDescription,
   hasDeleteButton,
   onDelete,
+  hasSelectCard,
 }) {
   return (
-    <CardStyled>
+    <CardStyled className={hasSelectCard ? "is-hoverable" : ""}>
       <div className="image">
         <img src={imageSource} alt={title} />
       </div>
@@ -53,6 +54,14 @@ const CardStyled = styled.div`
   box-shadow: ${theme.shadows.medium};
   border-radius: ${theme.borderRadius.extraRound};
   position: relative;
+
+  &.is-hoverable:hover {
+    transform: scale(1.05);
+    transition: 0.4s ease-out;
+    box-shadow: rgb(255, 154, 35) 0px 0px 8px 0px;
+    cursor: pointer;
+    border-radius: 15px;
+  }
 
   .image {
     width: 100%;
