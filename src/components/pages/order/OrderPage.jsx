@@ -15,7 +15,7 @@ export default function OrderPage() {
   const [isCollapsed, setIsCollapsed] = useState(false);
   const [currentTabSelected, setCurrentTabSelected] = useState("add");
   const [menu, setMenu] = useState(fakeMenu.LARGE);
-  // eslint-disable-next-line no-undef
+
   const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT);
 
   //comportements

@@ -7,7 +7,6 @@ import ImagePreview from "./ImagePreview";
 import SubmitMessage from "./SubmitMessage";
 import { getInputTextsConfig } from "./inputTextsConfig";
 
-// eslint-disable-next-line react-refresh/only-export-components
 export const EMPTY_PRODUCT = {
   id: "",
   imageSource: "",
