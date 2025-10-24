@@ -1,6 +1,4 @@
 import styled from "styled-components";
-import { theme } from "../../../../../../theme";
-import { FiCheck } from "react-icons/fi";
 import { FaHamburger } from "react-icons/fa";
 import { BsFillCameraFill } from "react-icons/bs";
 import { MdOutlineEuro } from "react-icons/md";
@@ -9,6 +7,7 @@ import OrderContext from "../../../../../../context/OrderContext";
 import TextInput from "../../../../../reusable-ui/TextInput";
 import Button from "../../../../../reusable-ui/Button";
 import ImagePreview from "./ImagePreview";
+import SubmitMessage from "./SubmitMessage";
 
 // eslint-disable-next-line react-refresh/only-export-components
 export const EMPTY_PRODUCT = {
@@ -108,12 +107,7 @@ export default function AddForm() {
           label={"Ajouter un nouveau produit au menu"}
           version="success"
         />
-        {isSubmitted && (
-          <div className="submit-message">
-            <FiCheck className="icon" />
-            <span className="message">Ajouté avec succès !</span>
-          </div>
-        )}
+        {isSubmitted && <SubmitMessage />}
       </div>
     </AddFormStyled>
   );
@@ -138,23 +132,5 @@ const AddFormStyled = styled.form`
     grid-area: 4 / -2 / -1 / -1;
     display: flex;
     align-items: center;
-
-    .submit-message {
-      color: ${theme.colors.success};
-      margin-left: 5px;
-
-      .icon {
-        margin-left: 10px;
-        width: 1em;
-        height: 1em;
-        border: 1px solid ${theme.colors.success};
-        border-radius: 50%;
-        vertical-align: middle;
-      }
-      .message {
-        margin-left: 5px;
-        font-size: ${theme.fonts.size.SM};
-      }
-    }
   }
 `;
