@@ -46,11 +46,11 @@ const TextInputStyled = styled.div`
   }}
   on passe d'une version "junior" à une version "senior" dite du dictionnaire
   ${(props) =>
-    extraStyle[
+    EXTRA_STYLE[
       props.version
     ]} enfin, ci-dessous, on déstructure pour s'affranchir du props et simplifier le code */
 
-  ${({ version }) => extraStyle[version]}
+  ${({ version }) => EXTRA_STYLE[version]}
 `;
 
 const extraStyleNormal = css`
@@ -82,7 +82,7 @@ const extraStyleMinimalist = css`
   }
 `;
 
-const extraStyle = {
+const EXTRA_STYLE = {
   normal: extraStyleNormal,
   minimalist: extraStyleMinimalist,
 };

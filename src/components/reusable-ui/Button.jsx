@@ -9,19 +9,15 @@ export default function Button({
   onClick,
 }) {
   return (
-    <PrimaryButtonStyled
-      className={className}
-      version={version}
-      onClick={onClick}
-    >
+    <ButtonStyled className={className} version={version} onClick={onClick}>
       <span>{label}</span>
       <div className="icon">{Icon && Icon}</div>
-    </PrimaryButtonStyled>
+    </ButtonStyled>
   );
 }
 
-const PrimaryButtonStyled = styled.button`
-  ${({ version }) => extraStyle[version]}
+const ButtonStyled = styled.button`
+  ${({ version }) => EXTRA_STYLE[version]}
 `;
 
 const extraStylePrimary = css`
@@ -108,7 +104,7 @@ const extraStyleSuccess = css`
   }
 `;
 
-const extraStyle = {
+const EXTRA_STYLE = {
   primary: extraStylePrimary,
   success: extraStyleSuccess,
 };
