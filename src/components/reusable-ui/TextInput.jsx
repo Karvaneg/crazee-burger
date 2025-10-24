@@ -24,18 +24,18 @@ const TextInputStyled = styled.div`
 
   .icon {
     display: flex;
-    font-size: ${theme.fonts.SM};
+    font-size: ${theme.fonts.size.P1};
     margin: 0 13px 0 8px;
   }
 
   input {
     border: none;
-    font-size: ${theme.fonts.SM};
+    font-size: ${theme.fonts.size.SM};
     width: 100%;
     //font-family: "Open Sans", sans-serif;
 
     &::placeholder {
-      // font-size: ${theme.fonts.SM};
+      font-size: ${theme.fonts.size.SM};
       color: ${theme.colors.greyMedium};
     }
   }
@@ -69,7 +69,7 @@ const extraStyleNormal = css`
 
 const extraStyleMinimalist = css`
   background-color: ${theme.colors.background_white};
-  padding: 8px 16px;
+  padding: 8px 16px 8px 8px;
   color: ${theme.colors.greyBlue};
 
   input {
