@@ -1,24 +1,45 @@
 import styled from "styled-components";
-import PrimaryButton from "./PrimaryButton";
+import Button from "./Button";
 import { theme } from "../../theme";
+import { TiDelete } from "react-icons/ti";
 
-export default function Card({ title, imageSource, leftDescription }) {
+export default function Card({
+  title,
+  imageSource,
+  leftDescription,
+  hasDeleteButton,
+  onDelete,
+}) {
   return (
     <CardStyled>
-        <div className="image">
-          <img src={imageSource} alt={title} />
+      <div className="image">
+        <img src={imageSource} alt={title} />
+      </div>
+      <div className="info-text">
+        <div className="title">{title}</div>
+        <div className="description">
+          <div className="left-description">{leftDescription}</div>
+          <div className="right-description">
+            <Button
+              className={"primary-button"}
+              label={"Ajouter"}
+              version="primary"
+            />
+          </div>
         </div>
-        <div className="info-text">
-            <div className="title">{title}</div>
-            <div className="description">
-                <div className="left-description">{leftDescription}</div>
-                <div className="right-description">
-                  <PrimaryButton className={"primary-button"} label={"Ajouter"} />
-                </div>
-            </div>
-        </div>
+      </div>
+
+      {hasDeleteButton && (
+        <button
+          className="delete-button"
+          aria-label="delete-button"
+          onClick={onDelete}
+        >
+          <TiDelete className="icon" />
+        </button>
+      )}
     </CardStyled>
-  )
+  );
 }
 
 const CardStyled = styled.div`
@@ -31,6 +52,7 @@ const CardStyled = styled.div`
   padding-bottom: 10px;
   box-shadow: ${theme.shadows.medium};
   border-radius: ${theme.borderRadius.extraRound};
+  position: relative;
 
   .image {
     width: 100%;
@@ -89,10 +111,35 @@ const CardStyled = styled.div`
 
         .primary-button {
           font-size: ${theme.fonts.size.XS};
-          cursor: pointer;
-          padding: 12px;
+          padding: 12px 0px 12px 12px;
         }
       }
+    }
+  }
+
+  .delete-button {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+    color: ${theme.colors.primary};
+    // z-index: 2;
+    padding: 0;
+    border: none;
+    background: none;
+
+    .icon {
+      height: 100%;
+      width: 100%;
+    }
+
+    :hover {
+      color: ${theme.colors.red};
+    }
+    :active {
+      color: ${theme.colors.primary};
     }
   }
 `;

@@ -1,38 +1,88 @@
-import styled from "styled-components"
-import { theme } from "../../theme"
+import styled, { css } from "styled-components";
+import { theme } from "../../theme";
 
-export default function TextInput({ value, onChange, Icon, ...extraProps }) {
+export default function TextInput({
+  value,
+  onChange,
+  Icon,
+  className,
+  version = "normal",
+  ...extraProps
+}) {
   return (
-    <InputStyled>
-        {Icon && Icon}
-        <input type="text" value={value} onChange={onChange} {...extraProps}/>
-    </InputStyled>
-  )
+    <TextInputStyled className={className} version={version}>
+      <div className="icon">{Icon && Icon}</div>
+      <input value={value} onChange={onChange} {...extraProps} />
+    </TextInputStyled>
+  );
 }
 
-const InputStyled = styled.div`
-    background-color: white;
-    border-radius: ${theme.borderRadius.round};
+const TextInputStyled = styled.div`
+  border-radius: ${theme.borderRadius.round};
+  display: flex;
+  align-items: center;
+
+  .icon {
     display: flex;
-    align-items: center;
-    padding: 18px 24px;
-    margin: 18px 0;
+    font-size: ${theme.fonts.size.P1};
+    margin: 0 13px 0 8px;
+  }
 
-    .icon{
-        font-size: ${theme.fonts.SM};
-        color: ${theme.colors.greyDark};
-        margin-right: 8px;
+  input {
+    border: none;
+    font-size: ${theme.fonts.size.SM};
+    width: 100%;
+    //font-family: "Open Sans", sans-serif;
+
+    &::placeholder {
+      font-size: ${theme.fonts.size.SM};
+      color: ${theme.colors.greyMedium};
     }
+  }
 
-    input{
-        border: none;
-        font-size: ${theme.fonts.SM};
-        color: ${theme.colors.dark};
-        width: 100%;
+  /* ${(props) => {
+    if (props.version === "normal") return extraStyleNormal;
+    if (props.version === "minimallist") return extraStyleMinimalist;
+  }}
+  on passe d'une version "junior" à une version "senior" dite du dictionnaire
+  ${(props) =>
+    EXTRA_STYLE[
+      props.version
+    ]} enfin, ci-dessous, on déstructure pour s'affranchir du props et simplifier le code */
 
-        &::placeholder {
-            background-color: white;
-            color: ${theme.colors.greyMedium};
-        }
+  ${({ version }) => EXTRA_STYLE[version]}
+`;
+
+const extraStyleNormal = css`
+  background-color: ${theme.colors.white};
+  padding: 18px 24px;
+  color: ${theme.colors.greySemiDark};
+
+  input {
+    color: ${theme.colors.dark};
+
+    &::placeholder {
+      background-color: ${theme.colors.white};
     }
-`
+  }
+`;
+
+const extraStyleMinimalist = css`
+  background-color: ${theme.colors.background_white};
+  padding: 8px 16px 8px 8px;
+  color: ${theme.colors.greyBlue};
+
+  input {
+    background: ${theme.colors.background_white};
+    color: ${theme.colors.dark};
+
+    &:focus {
+      outline: 0;
+    }
+  }
+`;
+
+const EXTRA_STYLE = {
+  normal: extraStyleNormal,
+  minimalist: extraStyleMinimalist,
+};

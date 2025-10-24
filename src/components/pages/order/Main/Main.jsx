@@ -1,13 +1,12 @@
 import styled from "styled-components";
 import { theme } from "../../../../theme";
-import Menu from "./Menu";
+import Menu from "./Menu/Menu";
 import Admin from "./Admin/Admin";
 import { useContext } from "react";
 import OrderContext from "../../../../context/OrderContext";
 
 export default function Main() {
-
-  const {isAdminMode, setIsAdminMode} = useContext(OrderContext);
+  const { isAdminMode, setIsAdminMode } = useContext(OrderContext);
 
   return (
     <MainStyled>
@@ -19,22 +18,21 @@ export default function Main() {
         {isAdminMode && <Admin />}
       </div>
     </MainStyled>
-  )
+  );
 }
 
 const MainStyled = styled.main`
-  background: ${theme.colors.background_white};  
-  box-shadow: ${theme.shadows.strong}; 
+  background: ${theme.colors.background_white};
+  box-shadow: ${theme.shadows.strong};
   border-bottom-left-radius: ${theme.borderRadius.extraRound};
   border-bottom-right-radius: ${theme.borderRadius.extraRound};
   height: calc(95vh - 10vh);
   display: grid;
 
   // TODO : this code is for basket and menu layout
-   grid-template-columns: 25% 1fr;
+  grid-template-columns: 25% 1fr;
   // this code is for only menu layout
   // grid-template-columns: 1fr;
-  
 
   .basket {
     border: 2px solid green;
