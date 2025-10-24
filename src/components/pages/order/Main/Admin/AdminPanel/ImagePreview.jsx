@@ -29,6 +29,7 @@ const ImagePreviewStyled = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
+    text-align: center;
     border: 1px solid ${theme.colors.greyLight};
     line-height: 1.5;
     color: ${theme.colors.greySemiDark};
