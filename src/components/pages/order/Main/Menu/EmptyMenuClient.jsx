@@ -3,17 +3,17 @@ import { theme } from "../../../../../theme";
 
 export default function EmptyMenuClient() {
   return (
-    <EmptyMenuClienStyled>
+    <EmptyMenuClientStyled>
       <span className="title">Victime de notre succès ! :D</span>
       <span className="description">
         De nouvelles recettes sont en cours de préparation.
       </span>
       <span className="description">A très vite !</span>
-    </EmptyMenuClienStyled>
+    </EmptyMenuClientStyled>
   );
 }
 
-const EmptyMenuClienStyled = styled.div`
+const EmptyMenuClientStyled = styled.div`
   background-color: ${theme.colors.background_white};
   box-shadow: ${theme.shadows.strong};
   border-bottom-right-radius: ${theme.borderRadius.extraRound};
