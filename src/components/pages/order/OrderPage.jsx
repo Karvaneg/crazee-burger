@@ -6,7 +6,7 @@ import NavBar from "./Navbar/NavBar";
 import { useState } from "react";
 import OrderContext from "../../../context/OrderContext";
 import { fakeMenu } from "../../../fakeData/fakeMenu";
-import { EMPTY_PRODUCT } from "./Main/Admin/AdminPanel/AddForm";
+import { EMPTY_PRODUCT } from "../../../enums/product";
 
 export default function OrderPage() {
   //state
@@ -17,6 +17,7 @@ export default function OrderPage() {
   const [menu, setMenu] = useState(fakeMenu.LARGE);
 
   const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT);
+  const [productSelected, setProductSelected] = useState(EMPTY_PRODUCT);
 
   //comportements
   //Add Product
@@ -46,6 +47,35 @@ export default function OrderPage() {
     setMenu(menuUpdated);
   };
 
+  const handleUpdateProduct = (updatedProduct) => {
+    // 1. Copy du state
+    const menuCopy = [...menu];
+
+    // 2. Manip du state
+    const menuUpdated = menuCopy.map((product) =>
+      product.id === updatedProduct.id ? updatedProduct : product
+    );
+    console.log(menuUpdated);
+
+    // 3. Update du state
+    setMenu(menuUpdated);
+    setCurrentProductSelected(updatedProduct); // garde le panel synchronisé
+  };
+
+  //Select Product
+  const handleSelectProduct = (idOfProductToSelect) => {
+    // 1. Copy du state
+    const currentProductSelectedCopy = currentProductSelected;
+
+    // 2. Manip du state
+    const productSelected = (currentProductSelectedCopy) =>
+      currentProductSelectedCopy.id === idOfProductToSelect;
+    console.log(productSelected);
+
+    // 3. Update du state
+    setCurrentProductSelected(productSelected);
+  };
+
   //Reset Menu
   const resetMenu = () => {
     setMenu(fakeMenu.SMALL);
@@ -58,9 +88,13 @@ export default function OrderPage() {
     setIsCollapsed,
     currentTabSelected,
     setCurrentTabSelected,
+    productSelected,
+    setProductSelected,
     menu,
     handleAddProduct,
+    handleUpdateProduct,
     handleDeleteProduct,
+    handleSelectProduct,
     resetMenu,
     newProduct,
     setNewProduct,

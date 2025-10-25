@@ -9,12 +9,25 @@ import EmptyMenuClient from "./EmptyMenuClient";
 const IMAGE_BY_DEFAULT = "/images/coming-soon.png";
 
 export default function Menu() {
-  const { menu, isAdminMode, handleDeleteProduct, resetMenu } =
-    useContext(OrderContext);
+  const {
+    menu,
+    isAdminMode,
+    handleDeleteProduct,
+    resetMenu,
+    // handleSelectProduct,
+    setProductSelected,
+  } = useContext(OrderContext);
 
   // state
 
   // comportements
+  const handleClick = (idProductSelected) => {
+    const productSelected = menu.find(
+      (product) => product.id === idProductSelected
+    );
+
+    setProductSelected(productSelected);
+  };
 
   // affichage (render)
 
@@ -35,12 +48,16 @@ export default function Menu() {
         return (
           <Card
             key={id}
+            id={id}
             title={title}
             imageSource={imageSource ? imageSource : IMAGE_BY_DEFAULT}
             leftDescription={formatPrice(price)}
             hasDeleteButton={isAdminMode}
             onDelete={() => handleDeleteProduct(id)}
+            onClick={() => handleClick(id)}
             hasSelectCard={isAdminMode}
+            // handleSelectProduct={handleSelectProduct}
+            // currentProductSelected={currentProductSelected}
           />
         );
       })}

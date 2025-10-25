@@ -4,15 +4,24 @@ import { theme } from "../../theme";
 import { TiDelete } from "react-icons/ti";
 
 export default function Card({
+  id,
   title,
   imageSource,
   leftDescription,
   hasDeleteButton,
   onDelete,
+  onClick,
   hasSelectCard,
+  // handleSelectProduct,
+  // currentProductSelected,
 }) {
   return (
-    <CardStyled className={hasSelectCard ? "is-hoverable" : ""}>
+    <CardStyled
+      className={hasSelectCard ? "is-hoverable" : ""}
+      onClick={onClick}
+      // onClick={() => handleSelectProduct(id)} // ✅ ici on clique sur cette carte
+      //  isSelected={currentProductSelected === id} // ✅ on vérifie si c’est la carte sélectionnée
+    >
       <div className="image">
         <img src={imageSource} alt={title} />
       </div>
