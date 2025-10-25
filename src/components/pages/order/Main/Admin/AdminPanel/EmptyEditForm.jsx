@@ -1,5 +1,6 @@
 import { HiCursorClick } from "react-icons/hi";
 import styled, { keyframes } from "styled-components";
+import { theme } from "../../../../../../theme";
 
 export default function EmptyEditForm() {
   return (
@@ -19,12 +20,12 @@ const EmptyEditFormStyled = styled.div`
   width: 50%;
   height: 100%;
   animation: ${lFfr} 1000ms ease 0s 1 normal none running;
-  font-family: "Amatic SC", cursive;
-  font-size: 24px;
+  font-family: ${theme.fonts.families.stylish};
+  font-size: ${theme.fonts.size.P3};
   display: flex;
   position: relative;
   top: 50px;
-  color: rgb(116, 123, 145);
+  color: ${theme.colors.greyBlue};
 
   span {
     margin-right: 10px;
