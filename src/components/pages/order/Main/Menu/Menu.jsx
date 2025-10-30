@@ -14,7 +14,6 @@ export default function Menu() {
     isAdminMode,
     handleDeleteProduct,
     resetMenu,
-    // handleSelectProduct,
     setProductSelected,
   } = useContext(OrderContext);
 
@@ -56,8 +55,6 @@ export default function Menu() {
             onDelete={() => handleDeleteProduct(id)}
             onClick={() => handleClick(id)}
             hasSelectCard={isAdminMode}
-            // handleSelectProduct={handleSelectProduct}
-            // currentProductSelected={currentProductSelected}
           />
         );
       })}

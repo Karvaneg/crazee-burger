@@ -12,15 +12,12 @@ export default function Card({
   onDelete,
   onClick,
   hasSelectCard,
-  // handleSelectProduct,
-  // currentProductSelected,
 }) {
   return (
     <CardStyled
       className={hasSelectCard ? "is-hoverable" : ""}
       onClick={onClick}
-      // onClick={() => handleSelectProduct(id)} // ✅ ici on clique sur cette carte
-      //  isSelected={currentProductSelected === id} // ✅ on vérifie si c’est la carte sélectionnée
+      aria-label={`card-${id}`}
     >
       <div className="image">
         <img src={imageSource} alt={title} />

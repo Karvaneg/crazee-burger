@@ -34,46 +34,32 @@ export default function OrderPage() {
 
   //Delete Product
   const handleDeleteProduct = (idOfProductToDelete) => {
-    // 1. Copy du state
+    // 1. Copy du state en mode shallow copy/clone, avec le spread operator (menu est en fait modifié)
     const menuCopy = [...menu];
 
     // 2. Manip du state
     const menuUpdated = menuCopy.filter(
       (product) => product.id !== idOfProductToDelete
     );
-    console.log(menuUpdated);
 
     // 3. Update du state
     setMenu(menuUpdated);
   };
 
   const handleUpdateProduct = (updatedProduct) => {
-    // 1. Copy du state
-    const menuCopy = [...menu];
+    // 1. Copy du state (en mode deep clone)
+    const menuCopy = JSON.parse(JSON.stringify(menu));
 
     // 2. Manip du state
-    const menuUpdated = menuCopy.map((product) =>
-      product.id === updatedProduct.id ? updatedProduct : product
+    const indexOfProductToUpdate = menu.findIndex(
+      (product) => product.id === updatedProduct.id
     );
-    console.log(menuUpdated);
+
+    menuCopy[indexOfProductToUpdate] = updatedProduct;
 
     // 3. Update du state
-    setMenu(menuUpdated);
-    setCurrentProductSelected(updatedProduct); // garde le panel synchronisé
-  };
-
-  //Select Product
-  const handleSelectProduct = (idOfProductToSelect) => {
-    // 1. Copy du state
-    const currentProductSelectedCopy = currentProductSelected;
-
-    // 2. Manip du state
-    const productSelected = (currentProductSelectedCopy) =>
-      currentProductSelectedCopy.id === idOfProductToSelect;
-    console.log(productSelected);
-
-    // 3. Update du state
-    setCurrentProductSelected(productSelected);
+    setMenu(menuCopy);
+    setProductSelected(updatedProduct); // garde le panel synchronisé
   };
 
   //Reset Menu
@@ -94,7 +80,6 @@ export default function OrderPage() {
     handleAddProduct,
     handleUpdateProduct,
     handleDeleteProduct,
-    handleSelectProduct,
     resetMenu,
     newProduct,
     setNewProduct,
