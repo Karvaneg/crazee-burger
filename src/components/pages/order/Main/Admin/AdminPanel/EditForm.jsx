@@ -1,7 +1,25 @@
 import styled from "styled-components";
+import { useContext, useState } from "react";
+import { getInputTextsConfig } from "./inputTextsConfig";
+import { EMPTY_PRODUCT } from "../../../../../../enums/product";
+import OrderContext from "../../../../../../context/OrderContext";
+import TextInput from "../../../../../reusable-ui/TextInput";
 import ImagePreview from "./ImagePreview";
 
-export default function EditForm({ productSelected }) {
+export default function EditForm() {
+  const { productSelected } = useContext(OrderContext);
+  const [productBeingEdited, setproductBeingEdited] = useState(EMPTY_PRODUCT);
+
+  const inputTexts = getInputTextsConfig(productSelected);
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setproductBeingEdited({
+      ...productBeingEdited,
+      [name]: value,
+    });
+  };
+
   //affichage
   return (
     <EditFormStyled>
@@ -10,9 +28,14 @@ export default function EditForm({ productSelected }) {
         title={productSelected.title}
       />
       <div className="input-fields">
-        <p>{productSelected.title}</p>
-        <p>{productSelected.imageSource}</p>
-        <p>{productSelected.price}</p>
+        {inputTexts.map((input) => (
+          <TextInput
+            {...input}
+            key={input.id}
+            onChange={handleChange}
+            version="minimalist"
+          />
+        ))}
       </div>
       {/* <div className="submit">{isSubmitted && <SubmitMessage />}</div> */}
     </EditFormStyled>
