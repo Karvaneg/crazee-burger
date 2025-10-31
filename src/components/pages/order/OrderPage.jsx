@@ -7,9 +7,10 @@ import { useState } from "react";
 import OrderContext from "../../../context/OrderContext";
 import { fakeMenu } from "../../../fakeData/fakeMenu";
 import { EMPTY_PRODUCT } from "../../../enums/product";
+import { deepClone } from "../../../utils/array";
 
 export default function OrderPage() {
-  //state
+  // STATE
   const { username } = useParams();
   const [isAdminMode, setIsAdminMode] = useState(false);
   const [isCollapsed, setIsCollapsed] = useState(false);
@@ -19,11 +20,12 @@ export default function OrderPage() {
   const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT);
   const [productSelected, setProductSelected] = useState(EMPTY_PRODUCT);
 
-  //comportements
+  // COMPORTEMENTS
   //Add Product
   const handleAddProduct = (newProduct) => {
-    // 1. Copy du state
-    const menuCopy = [...menu];
+    // A éviter : Copy du state en mode shallow copy/clone, avec le spread operator (menu est en fait modifié) : const menuCopy = [...menu];
+    // 1. Copy du state (en mode deep clone)
+    const menuCopy = deepClone(menu);
 
     // 2. Manip du state
     const menuUpdated = [newProduct, ...menuCopy];
@@ -34,8 +36,8 @@ export default function OrderPage() {
 
   //Delete Product
   const handleDeleteProduct = (idOfProductToDelete) => {
-    // 1. Copy du state en mode shallow copy/clone, avec le spread operator (menu est en fait modifié)
-    const menuCopy = [...menu];
+    // 1. Copy du state (en mode deep clone)
+    const menuCopy = deepClone(menu);
 
     // 2. Manip du state
     const menuUpdated = menuCopy.filter(
@@ -48,7 +50,7 @@ export default function OrderPage() {
 
   const handleUpdateProduct = (updatedProduct) => {
     // 1. Copy du state (en mode deep clone)
-    const menuCopy = JSON.parse(JSON.stringify(menu));
+    const menuCopy = deepClone(menu);
 
     // 2. Manip du state
     const indexOfProductToUpdate = menu.findIndex(
@@ -85,7 +87,7 @@ export default function OrderPage() {
     setNewProduct,
   };
 
-  //affichage (render)
+  // AFFICHAGE (RENDER)
   return (
     <OrderContext.Provider value={OrderContextValue}>
       <OrderPageStyled>
