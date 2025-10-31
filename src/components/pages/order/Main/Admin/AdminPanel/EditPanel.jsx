@@ -5,15 +5,15 @@ import OrderContext from "../../../../../../context/OrderContext";
 
 export default function EditPanel() {
   const { productSelected } = useContext(OrderContext);
-  // state
+  // STATE
 
-  //comportements
+  // COMPORTEMENTS
   // Si aucun produit sélectionné → on affiche le panneau vide
   if (!productSelected || !productSelected.id) {
     return <EmptyEditPanel />;
   }
 
-  //affichage
+  // AFFICHAGE (RENDER)
 
   return <EditForm productSelected={productSelected} />;
 }

@@ -17,18 +17,18 @@ export default function Menu() {
     setProductSelected,
   } = useContext(OrderContext);
 
-  // state
+  // STATE
 
-  // comportements
+  // COMPORTEMENTS (ou FUNCTIONS ou Gestionnaires d'évènement ou "event handlers")
   const handleClick = (idProductSelected) => {
-    const productSelected = menu.find(
+    const productClickedOn = menu.find(
       (product) => product.id === idProductSelected
     );
 
-    setProductSelected(productSelected);
+    setProductSelected(productClickedOn);
   };
 
-  // affichage (render)
+  // AFFICHAGE (RENDER)
 
   if (menu.length === 0)
     return (

@@ -6,13 +6,13 @@ import TextInput from "../../../../../reusable-ui/TextInput";
 import ImagePreview from "./ImagePreview";
 
 export default function EditForm() {
-  // State
+  // STATE
   const { productSelected, setProductSelected, handleUpdateProduct } =
     useContext(OrderContext);
 
   const inputTexts = getInputTextsConfig(productSelected);
 
-  // comportements
+  // COMPORTEMENTS
   const handleChange = (e) => {
     const { name, value } = e.target;
     const productBeingUpdated = {
@@ -24,7 +24,7 @@ export default function EditForm() {
     handleUpdateProduct(productBeingUpdated); // met à jour le menu
   };
 
-  //affichage
+  // AFFICHAGE (RENDER)
   return (
     <EditFormStyled>
       <ImagePreview

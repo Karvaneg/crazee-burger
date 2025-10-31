@@ -20,7 +20,7 @@ export default function OrderPage() {
   const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT);
   const [productSelected, setProductSelected] = useState(EMPTY_PRODUCT);
 
-  // COMPORTEMENTS
+  // COMPORTEMENTS (ou Gestionnaire de state ou "state handlers")
   //Add Product
   const handleAddProduct = (newProduct) => {
     // A éviter : Copy du state en mode shallow copy/clone, avec le spread operator (menu est en fait modifié) : const menuCopy = [...menu];

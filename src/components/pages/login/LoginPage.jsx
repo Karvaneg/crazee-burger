@@ -1,17 +1,16 @@
-import styled from 'styled-components'
-import Logo from '../../reusable-ui/Logo'
-import LoginForm from './LoginForm'
+import styled from "styled-components";
+import Logo from "../../reusable-ui/Logo";
+import LoginForm from "./LoginForm";
 
 export default function LoginPage() {
-
-  //affichage (render)
+  // AFFICHAGE (RENDER)
   return (
     <LoginPageStyled>
       {/* ici className de props pour le style */}
       <Logo className="logo-login-page" />
       <LoginForm />
     </LoginPageStyled>
-  )
+  );
 }
 
 const LoginPageStyled = styled.div`
@@ -38,4 +37,4 @@ const LoginPageStyled = styled.div`
   .logo-login-page {
     transform: scale(2.5);
   }
-`
+`;

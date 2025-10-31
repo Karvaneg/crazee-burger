@@ -8,11 +8,11 @@ import TextInput from "../../reusable-ui/TextInput";
 import Button from "../../reusable-ui/Button";
 
 export default function LoginForm() {
-  //state
+  // STATE
   const [inputValue, setInputValue] = useState("");
   const navigate = useNavigate();
 
-  //comportements
+  // COMPORTEMENTS
   const handleSubmit = (e) => {
     e.preventDefault();
     setInputValue("");
@@ -23,7 +23,7 @@ export default function LoginForm() {
     setInputValue(e.target.value);
   };
 
-  //affichage (render)
+  // AFFICHAGE (RENDER)
   return (
     <LoginFormStyled action="submit" onSubmit={handleSubmit}>
       <div>

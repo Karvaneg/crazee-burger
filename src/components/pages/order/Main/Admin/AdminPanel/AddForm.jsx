@@ -9,13 +9,13 @@ import { getInputTextsConfig } from "./inputTextsConfig";
 import { EMPTY_PRODUCT } from "../../../../../../enums/product";
 
 export default function AddForm() {
-  // state
+  // STATE
   const { handleAddProduct, newProduct, setNewProduct } =
     useContext(OrderContext);
 
   const [isSubmitted, setIsSubmitted] = useState(false);
 
-  // comportements
+  // COMPORTEMENTS
   const handleSubmit = (e) => {
     e.preventDefault();
     const newProductToAdd = {
@@ -56,6 +56,7 @@ export default function AddForm() {
 
   const inputTexts = getInputTextsConfig(newProduct);
 
+  //AFFICHAGE (RENDER)
   return (
     <AddFormStyled onSubmit={handleSubmit}>
       <ImagePreview
