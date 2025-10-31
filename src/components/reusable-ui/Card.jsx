@@ -11,13 +11,15 @@ export default function Card({
   hasDeleteButton,
   onDelete,
   onClick,
-  hasSelectCard,
+  isHoverable,
+  isSelected,
 }) {
   return (
     <CardStyled
-      className={hasSelectCard ? "is-hoverable" : ""}
+      className={isHoverable ? "is-hoverable" : ""}
       onClick={onClick}
       aria-label={`card-${id}`}
+      style={isSelected ? { background: "orange" } : {}}
     >
       <div className="image">
         <img src={imageSource} alt={title} />
@@ -65,7 +67,7 @@ const CardStyled = styled.div`
   &.is-hoverable:hover {
     transform: scale(1.05);
     transition: 0.4s ease-out;
-    box-shadow: rgb(255, 154, 35) 0px 0px 8px 0px;
+    box-shadow: ${theme.shadows.orangeHighLight};
     cursor: pointer;
     border-radius: 15px;
   }

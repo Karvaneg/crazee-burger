@@ -5,6 +5,7 @@ import { useContext } from "react";
 import OrderContext from "../../../../../context/OrderContext";
 import EmptyMenuAdmin from "./EmptyMenuAdmin";
 import EmptyMenuClient from "./EmptyMenuClient";
+import { checkIfProductIsClicked } from "./helpers";
 
 const IMAGE_BY_DEFAULT = "/images/coming-soon.png";
 
@@ -14,6 +15,7 @@ export default function Menu() {
     isAdminMode,
     handleDeleteProduct,
     resetMenu,
+    productSelected,
     setProductSelected,
   } = useContext(OrderContext);
 
@@ -54,7 +56,8 @@ export default function Menu() {
             hasDeleteButton={isAdminMode}
             onDelete={() => handleDeleteProduct(id)}
             onClick={() => handleClick(id)}
-            hasSelectCard={isAdminMode}
+            isHoverable={isAdminMode}
+            isSelected={checkIfProductIsClicked(id, productSelected.id)}
           />
         );
       })}
