@@ -2,6 +2,7 @@ import styled, { css } from "styled-components";
 import Button from "./Button";
 import { theme } from "../../theme";
 import { TiDelete } from "react-icons/ti";
+import clsx from "clsx";
 
 export default function Card({
   id,
@@ -16,6 +17,10 @@ export default function Card({
 }) {
   return (
     <CardStyled
+      className={clsx({
+        "is-hoverable": isHoverable,
+        "is-selected": isSelected,
+      })}
       $isHoverable={isHoverable}
       $isSelected={isSelected}
       onClick={onClick}
@@ -32,6 +37,7 @@ export default function Card({
             <div className="right-description">
               <Button
                 className={"primary-button"}
+                aria-label="add-button"
                 label={"Ajouter"}
                 version="primary"
               />
@@ -53,8 +59,13 @@ export default function Card({
   );
 }
 
-const CardStyled = styled.div`
-  ${({ $isHoverable }) => $isHoverable && hoverableStyle}
+// -------------------------
+// Styled-component pro
+// -------------------------
+
+const CardStyled = styled.div.withConfig({
+  shouldForwardProp: (prop) => !["$isHoverable", "$isSelected"].includes(prop),
+})`
   border-radius: ${theme.borderRadius.extraRound};
   height: 330px;
 
@@ -116,7 +127,6 @@ const CardStyled = styled.div`
           white-space: nowrap;
           overflow: hidden;
           text-overflow: ellipsis;
-          font-weight: ${theme.fonts.weights.medium};
           color: ${theme.colors.primary};
         }
 
@@ -160,10 +170,18 @@ const CardStyled = styled.div`
       }
     }
 
+    /* Hover dynamique si $isHoverable */
+    ${({ $isHoverable }) => $isHoverable && hoverableStyle}
+
+    /* Style sélectionné */
     ${({ $isHoverable, $isSelected }) =>
       $isHoverable && $isSelected && selectedStyle}
   }
 `;
+
+// -------------------------
+// Styles dynamiques
+// -------------------------
 
 const hoverableStyle = css`
   &:hover {
