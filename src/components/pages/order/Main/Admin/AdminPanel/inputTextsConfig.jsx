@@ -10,6 +10,7 @@ export const getInputTextsConfig = (newProduct) => [
     placeholder: "Nom du produit (ex: Super Burger)",
     value: newProduct.title,
     Icon: <FaHamburger />,
+    ariaLabel: "Nom du produit",
   },
   {
     id: "1",
@@ -19,13 +20,15 @@ export const getInputTextsConfig = (newProduct) => [
       "Lien URL d'une image (ex: https://la-photo-de-mon-produit.png)",
     value: newProduct.imageSource,
     Icon: <BsFillCameraFill />,
+    ariaLabel: "Lien URL de l'image du produit",
   },
   {
     id: "2",
     name: "price",
-    type: "texte",
+    type: "text",
     placeholder: "Prix",
     value: newProduct.price ? newProduct.price : "",
     Icon: <MdOutlineEuro />,
+    ariaLabel: "Prix en euros",
   },
 ];
