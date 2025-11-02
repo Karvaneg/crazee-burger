@@ -17,6 +17,8 @@ export default function Menu() {
     resetMenu,
     productSelected,
     setProductSelected,
+    setIsCollapsed,
+    setCurrentTabSelected,
   } = useContext(OrderContext);
 
   // STATE
@@ -24,6 +26,8 @@ export default function Menu() {
   // COMPORTEMENTS (ou FUNCTIONS ou Gestionnaires d'évènement ou "event handlers")
   const handleClick = (idProductSelected) => {
     if (!isAdminMode) return;
+    setIsCollapsed(false);
+    setCurrentTabSelected("edit");
     const productClickedOn = menu.find(
       (product) => product.id === idProductSelected
     );
