@@ -23,6 +23,7 @@ export default function Menu() {
 
   // COMPORTEMENTS (ou FUNCTIONS ou Gestionnaires d'évènement ou "event handlers")
   const handleClick = (idProductSelected) => {
+    if (!isAdminMode) return;
     const productClickedOn = menu.find(
       (product) => product.id === idProductSelected
     );
