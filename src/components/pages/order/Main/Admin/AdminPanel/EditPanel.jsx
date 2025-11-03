@@ -15,5 +15,5 @@ export default function EditPanel() {
 
   // AFFICHAGE (RENDER)
 
-  return <EditForm productSelected={productSelected} />;
+  return <EditForm />;
 }
