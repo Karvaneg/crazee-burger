@@ -19,20 +19,23 @@ export default function Menu() {
     setProductSelected,
     setIsCollapsed,
     setCurrentTabSelected,
+    titleEditRef,
   } = useContext(OrderContext);
 
   // STATE
 
   // COMPORTEMENTS (ou FUNCTIONS ou Gestionnaires d'évènement ou "event handlers")
-  const handleClick = (idProductSelected) => {
+  // Une fonction est par définition synchrone / un setter est asynchrone càd que l'update du state ne se fait pas immédiatement
+  // pour que le focus soit bien mis sur le bon élément après le setState, il faut donc s'assurer que le setState est bien terminé avant d'exécuter le focus() donc on rend la fonction handleClick asynchrone et on utilise await pour attendre la fin du setState avant d'exécuter le focus()
+  const handleClick = async (idProductSelected) => {
     if (!isAdminMode) return;
-    setIsCollapsed(false);
-    setCurrentTabSelected("edit");
+    await setIsCollapsed(false);
+    await setCurrentTabSelected("edit");
     const productClickedOn = menu.find(
       (product) => product.id === idProductSelected
     );
-
-    setProductSelected(productClickedOn);
+    await setProductSelected(productClickedOn);
+    titleEditRef.current.focus();
   };
 
   const handleCardDelete = (e, idProductToDelete) => {

@@ -3,7 +3,7 @@ import styled from "styled-components";
 import Main from "./Main/Main";
 import { theme } from "../../../theme";
 import NavBar from "./Navbar/NavBar";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import OrderContext from "../../../context/OrderContext";
 import { fakeMenu } from "../../../fakeData/fakeMenu";
 import { EMPTY_PRODUCT } from "../../../enums/product";
@@ -19,6 +19,8 @@ export default function OrderPage() {
 
   const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT);
   const [productSelected, setProductSelected] = useState(EMPTY_PRODUCT);
+
+  const titleEditRef = useRef();
 
   // COMPORTEMENTS (ou Gestionnaire de state ou "state handlers")
   //Add Product
@@ -86,6 +88,7 @@ export default function OrderPage() {
     resetMenu,
     newProduct,
     setNewProduct,
+    titleEditRef,
   };
 
   // AFFICHAGE (RENDER)
