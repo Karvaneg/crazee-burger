@@ -48,7 +48,6 @@ export default function OrderPage() {
 
     // 3. Update du state
     setMenu(menuUpdated);
-    setProductSelected(EMPTY_PRODUCT); // vide le panneau d'édition
   };
 
   const handleUpdateProduct = (updatedProduct) => {
