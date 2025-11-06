@@ -1,10 +1,10 @@
 import styled from "styled-components";
 import { useContext } from "react";
-import { getInputTextsConfig } from "./inputTextsConfig";
-import OrderContext from "../../../../../../context/OrderContext";
-import TextInput from "../../../../../reusable-ui/TextInput";
-import ImagePreview from "./ImagePreview";
-import { theme } from "../../../../../../theme";
+import { getInputTextsConfig } from "../inputTextsConfig";
+import OrderContext from "../../../../../../../context/OrderContext";
+import TextInput from "../../../../../../reusable-ui/TextInput";
+import ImagePreview from "../ImagePreview";
+import { theme } from "../../../../../../../theme";
 
 export default function EditForm() {
   // STATE

@@ -1,12 +1,12 @@
 import styled from "styled-components";
 import { useContext, useState } from "react";
-import OrderContext from "../../../../../../context/OrderContext";
-import TextInput from "../../../../../reusable-ui/TextInput";
-import Button from "../../../../../reusable-ui/Button";
-import ImagePreview from "./ImagePreview";
-import SubmitMessage from "./SubmitMessage";
-import { getInputTextsConfig } from "./inputTextsConfig";
-import { EMPTY_PRODUCT } from "../../../../../../enums/product";
+import OrderContext from "../../../../../../../context/OrderContext";
+import TextInput from "../../../../../../reusable-ui/TextInput";
+import Button from "../../../../../../reusable-ui/Button";
+import ImagePreview from "../ImagePreview";
+import SubmitMessage from "../SubmitMessage";
+import { getInputTextsConfig } from "../inputTextsConfig";
+import { EMPTY_PRODUCT } from "../../../../../../../enums/product";
 
 export default function AddForm() {
   // STATE

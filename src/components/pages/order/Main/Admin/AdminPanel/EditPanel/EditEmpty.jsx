@@ -1,13 +1,13 @@
 import { HiCursorClick } from "react-icons/hi";
 import styled, { keyframes } from "styled-components";
-import { theme } from "../../../../../../theme";
+import { theme } from "../../../../../../../theme";
 
-export default function EmptyEditForm() {
+export default function EditEmpty() {
   return (
-    <EmptyEditFormStyled>
+    <EditEmptyStyled>
       <span>Cliquer sur un produit du menu pour le modifier</span>
       <HiCursorClick />
-    </EmptyEditFormStyled>
+    </EditEmptyStyled>
   );
 }
 
@@ -16,7 +16,7 @@ const lFfr = keyframes`
   100% { opacity: 1; }
 `;
 
-const EmptyEditFormStyled = styled.div`
+const EditEmptyStyled = styled.div`
   width: 50%;
   height: 100%;
   animation: ${lFfr} 1000ms ease 0s 1 normal none running;
