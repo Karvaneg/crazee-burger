@@ -1,12 +1,9 @@
-import styled from "styled-components";
 import { useContext, useState } from "react";
 import OrderContext from "../../../../../../../context/OrderContext";
-import TextInput from "../../../../../../reusable-ui/TextInput";
-import Button from "../../../../../../reusable-ui/Button";
-import ImagePreview from "../ImagePreview";
-import SubmitMessage from "../SubmitMessage";
-import { getInputTextsConfig } from "../inputTextsConfig";
 import { EMPTY_PRODUCT } from "../../../../../../../enums/product";
+import Form from "../../AdminPanel/Form";
+import Button from "../../../../../../reusable-ui/Button";
+import SubmitMessage from "../SubmitMessage";
 
 export default function AddForm() {
   // STATE
@@ -54,54 +51,17 @@ export default function AddForm() {
     }, 2000);
   };
 
-  const inputTexts = getInputTextsConfig(newProduct);
-
   //AFFICHAGE (RENDER)
   return (
-    <AddFormStyled onSubmit={handleSubmit}>
-      <ImagePreview
-        imageSource={newProduct.imageSource}
-        title={newProduct.title}
-      />
-      <div className="input-fields">
-        {inputTexts.map((input) => (
-          <TextInput
-            {...input}
-            key={input.id}
-            onChange={handleChange}
-            version="minimalist"
-          />
-        ))}
-      </div>
-      <div className="submit">
+    <Form onSubmit={handleSubmit} onChange={handleChange} product={newProduct}>
+      <>
         <Button
+          className="submit-button"
           label={"Ajouter un nouveau produit au menu"}
           version="success"
         />
         {isSubmitted && <SubmitMessage />}
-      </div>
-    </AddFormStyled>
+      </>
+    </Form>
   );
 }
-
-const AddFormStyled = styled.form`
-  display: grid;
-  grid-template-columns: 1fr 3fr;
-  grid-template-rows: repeat(4, 1fr);
-  width: 70%;
-  height: 100%;
-  grid-column-gap: 20px;
-  grid-row-gap: 8px;
-
-  .input-fields {
-    grid-area: 1 / 2 / -2 / -1;
-    display: grid;
-    row-gap: 8px;
-  }
-
-  .submit {
-    grid-area: 4 / -2 / -1 / -1;
-    display: flex;
-    align-items: center;
-  }
-`;
