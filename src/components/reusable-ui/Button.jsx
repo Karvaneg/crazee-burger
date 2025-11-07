@@ -87,7 +87,7 @@ const extraStyleSuccess = css`
   background: ${theme.colors.success};
   border: 1px solid ${theme.colors.success};
   border-radius: ${theme.borderRadius.round};
-  height: 2.1875rem;
+  height: 100%;
   padding: 0 1.5em;
   font-weight: ${theme.fonts.weights.semiBold};
 

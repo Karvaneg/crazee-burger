@@ -3,6 +3,7 @@ import { theme } from "../../theme";
 
 export default function TextInput({
   value,
+  ariaLabel,
   onChange,
   Icon,
   className,
@@ -12,7 +13,12 @@ export default function TextInput({
   return (
     <TextInputStyled className={className} version={version}>
       <div className="icon">{Icon && Icon}</div>
-      <input value={value} onChange={onChange} {...extraProps} />
+      <input
+        value={value}
+        onChange={onChange}
+        aria-label={ariaLabel}
+        {...extraProps}
+      />
     </TextInputStyled>
   );
 }

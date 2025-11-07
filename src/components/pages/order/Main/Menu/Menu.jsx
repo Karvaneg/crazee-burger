@@ -5,18 +5,48 @@ import { useContext } from "react";
 import OrderContext from "../../../../../context/OrderContext";
 import EmptyMenuAdmin from "./EmptyMenuAdmin";
 import EmptyMenuClient from "./EmptyMenuClient";
+import { checkIfProductIsClicked } from "./helpers";
+import { EMPTY_PRODUCT } from "../../../../../enums/product";
 
 const IMAGE_BY_DEFAULT = "/images/coming-soon.png";
 
 export default function Menu() {
-  const { menu, isAdminMode, handleDeleteProduct, resetMenu } =
-    useContext(OrderContext);
+  const {
+    menu,
+    isAdminMode,
+    handleDeleteProduct,
+    resetMenu,
+    productSelected,
+    setProductSelected,
+    setIsCollapsed,
+    setCurrentTabSelected,
+    titleEditRef,
+  } = useContext(OrderContext);
 
-  // state
+  // STATE
 
-  // comportements
+  // COMPORTEMENTS (ou FUNCTIONS ou Gestionnaires d'évènement ou "event handlers")
+  // Une fonction est par définition synchrone / un setter est asynchrone càd que l'update du state ne se fait pas immédiatement
+  // pour que le focus soit bien mis sur le bon élément après le setState, il faut donc s'assurer que le setState est bien terminé avant d'exécuter le focus() donc on rend la fonction handleClick asynchrone et on utilise await pour attendre la fin du setState avant d'exécuter le focus()
+  const handleClick = async (idProductSelected) => {
+    if (!isAdminMode) return;
+    await setIsCollapsed(false);
+    await setCurrentTabSelected("edit");
+    const productClickedOn = menu.find(
+      (product) => product.id === idProductSelected
+    );
+    await setProductSelected(productClickedOn);
+    titleEditRef.current.focus();
+  };
 
-  // affichage (render)
+  const handleCardDelete = (e, idProductToDelete) => {
+    e.stopPropagation();
+    handleDeleteProduct(idProductToDelete);
+    idProductToDelete === productSelected.id &&
+      setProductSelected(EMPTY_PRODUCT); // vide le panneau d'édition
+  };
+
+  // AFFICHAGE (RENDER)
 
   if (menu.length === 0)
     return (
@@ -35,11 +65,15 @@ export default function Menu() {
         return (
           <Card
             key={id}
+            id={id}
             title={title}
             imageSource={imageSource ? imageSource : IMAGE_BY_DEFAULT}
             leftDescription={formatPrice(price)}
             hasDeleteButton={isAdminMode}
-            onDelete={() => handleDeleteProduct(id)}
+            onDelete={(e) => handleCardDelete(e, id)}
+            onClick={() => handleClick(id)}
+            isHoverable={isAdminMode}
+            isSelected={checkIfProductIsClicked(id, productSelected.id)}
           />
         );
       })}
