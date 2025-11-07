@@ -44,7 +44,6 @@ export default function Menu() {
     handleDeleteProduct(idProductToDelete);
     idProductToDelete === productSelected.id &&
       setProductSelected(EMPTY_PRODUCT); // vide le panneau d'édition
-    titleEditRef.current.focus();
   };
 
   // AFFICHAGE (RENDER)
