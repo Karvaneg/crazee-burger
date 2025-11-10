@@ -19,8 +19,7 @@ export default function Basket() {
 
 const BasketStyled = styled.div`
   border-bottom-left-radius: ${theme.borderRadius.extraRound};
-  box-shadow: 0px 0px 20px 0px #00000033 inset;
-
+  box-shadow: ${theme.shadows.basket};
   background: ${theme.colors.background_white};
   display: flex;
   flex-direction: column;
