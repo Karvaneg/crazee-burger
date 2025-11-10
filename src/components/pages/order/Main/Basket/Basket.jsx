@@ -1,12 +1,13 @@
 import styled from "styled-components";
 import { theme } from "../../../../../theme";
+import Total from "./Total";
+import { formatPrice } from "../../../../../utils/maths";
 
 export default function Basket() {
   return (
     <BasketStyled>
       <header>
-        <span>TOTAL</span>
-        <span>0,00 €</span>
+        <Total amountToPay={formatPrice(0)} />
       </header>
       <div className="basket-items">
         {/* Basket items will be rendered here */}
@@ -28,15 +29,11 @@ const BasketStyled = styled.div`
 
   header {
     background: ${theme.colors.background_dark};
-    font-weight: ${theme.fonts.weights.regular};
-    font-size: ${theme.fonts.size.P4};
-    color: ${theme.colors.primary};
+
     padding-top: 12px;
     padding-right: 16px;
     padding-left: 16px;
     padding-bottom: 13px;
-    display: flex;
-    justify-content: space-between;
   }
   .basket-items {
     // overflow-y: scroll;
