@@ -3,6 +3,7 @@ import { theme } from "../../../../../theme";
 import Total from "./Total";
 import { formatPrice } from "../../../../../utils/maths";
 import Footer from "./Footer";
+import BasketBody from "./BasketBody";
 
 export default function Basket() {
   return (
@@ -10,10 +11,8 @@ export default function Basket() {
       <header>
         <Total amountToPay={formatPrice(0)} />
       </header>
-      <div className="basket-items">
-        {/* Basket items will be rendered here */}
-        Votre commande est vide.
-      </div>
+
+      <BasketBody />
 
       <Footer />
     </BasketStyled>
@@ -31,20 +30,9 @@ const BasketStyled = styled.div`
 
   header {
     background: ${theme.colors.background_dark};
-
     padding-top: 12px;
     padding-right: 16px;
     padding-left: 16px;
     padding-bottom: 13px;
-  }
-  .basket-items {
-    // overflow-y: scroll;
-    color: ${theme.colors.greyBlue};
-    font-weight: ${theme.fonts.weights.regular};
-    font-size: ${theme.fonts.size.P4};
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
   }
 `;
