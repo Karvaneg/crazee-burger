@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { theme } from "../../../../../theme";
 import Total from "./Total";
 import { formatPrice } from "../../../../../utils/maths";
+import Footer from "./Footer";
 
 export default function Basket() {
   return (
@@ -13,7 +14,8 @@ export default function Basket() {
         {/* Basket items will be rendered here */}
         Votre commande est vide.
       </div>
-      <footer>Codé avec ❤️ et React.JS</footer>
+
+      <Footer />
     </BasketStyled>
   );
 }
@@ -44,17 +46,5 @@ const BasketStyled = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
-  }
-
-  footer {
-    background: ${theme.colors.background_dark};
-    color: ${theme.colors.text_white};
-    border-bottom-left-radius: ${theme.borderRadius.extraRound};
-    padding-top: 22.5px;
-    padding-bottom: 22.5px;
-    text-align: center;
-    vertical-align: middle;
-    font-weight: ${theme.fonts.weights.bold};
-    font-size: ${theme.fonts.size.P2};
   }
 `;
