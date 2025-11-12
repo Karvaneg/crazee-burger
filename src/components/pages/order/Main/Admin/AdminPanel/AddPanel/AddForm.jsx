@@ -1,15 +1,18 @@
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import OrderContext from "../../../../../../../context/OrderContext";
 import { EMPTY_PRODUCT } from "../../../../../../../enums/product";
 import Form from "../Form";
 import SubmitButton from "../SubmitButton";
+import { useSuccessMessage } from "../../../../../../../hooks/useSuccessMessage";
+
+// Grâce au hook on a un code qui a des states qui consomment les states de useContext et useSuccessMessage et uniquement des gestionnaires de comportements, puis qui gère l'affichage
 
 export default function AddForm() {
   // STATE
   const { handleAddProduct, newProduct, setNewProduct } =
     useContext(OrderContext);
 
-  const [isSubmitted, setIsSubmitted] = useState(false);
+  const { isSubmitted, displaySuccessMessage } = useSuccessMessage(5000);
 
   // COMPORTEMENTS
   const handleSubmit = (e) => {
@@ -41,13 +44,6 @@ export default function AddForm() {
     // OU
 
     setNewProduct({ ...newProduct, [e.target.name]: e.target.value });
-  };
-
-  const displaySuccessMessage = () => {
-    setIsSubmitted(true);
-    setTimeout(() => {
-      setIsSubmitted(false);
-    }, 2000);
   };
 
   //AFFICHAGE (RENDER)
