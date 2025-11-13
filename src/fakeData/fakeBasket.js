@@ -1,3 +1,5 @@
+import { EMPTY_PRODUCT } from "../enums/product"
+
 const EMPTY = []
 
 const SMALL = [
@@ -134,6 +136,10 @@ const LARGE = [
 ]
 
 const LARGE_WEIRD = [
+  {
+    ...EMPTY_PRODUCT,
+    quantity: 1,
+  },
   {
     id: "1",
     imageSource: "/images/fries3.png",
