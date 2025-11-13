@@ -32,7 +32,7 @@ const BasketStyled = styled.div`
   background: ${theme.colors.background_white};
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  height: 85vh;
   font-family: ${theme.fonts.families.stylish};
 
   header {
