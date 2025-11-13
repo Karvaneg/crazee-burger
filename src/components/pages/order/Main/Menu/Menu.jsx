@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { formatPrice } from "../../../../../utils/maths";
 import Card from "../../../../reusable-ui/Card";
 import { useContext } from "react";
@@ -7,6 +7,7 @@ import EmptyMenuAdmin from "./EmptyMenuAdmin";
 import EmptyMenuClient from "./EmptyMenuClient";
 import { checkIfProductIsClicked } from "./helpers";
 import { EMPTY_PRODUCT, IMAGE_COMING_SOON } from "../../../../../enums/product";
+import { findInArray } from "../../../../../utils/array";
 
 export default function Menu() {
   const {
@@ -19,6 +20,7 @@ export default function Menu() {
     setIsCollapsed,
     setCurrentTabSelected,
     titleEditRef,
+    handleAddToBasket,
   } = useContext(OrderContext);
 
   // STATE
@@ -30,9 +32,10 @@ export default function Menu() {
     if (!isAdminMode) return;
     await setIsCollapsed(false);
     await setCurrentTabSelected("edit");
-    const productClickedOn = menu.find(
-      (product) => product.id === idProductSelected
-    );
+    // const productClickedOn = menu.find(
+    //   (product) => product.id === idProductSelected
+    // );
+    const productClickedOn = findInArray(idProductSelected, menu);
     await setProductSelected(productClickedOn);
     titleEditRef.current.focus();
   };
@@ -42,6 +45,12 @@ export default function Menu() {
     handleDeleteProduct(idProductToDelete);
     idProductToDelete === productSelected.id &&
       setProductSelected(EMPTY_PRODUCT); // vide le panneau d'édition
+  };
+
+  const handleAddButton = (e, idProductToAdd) => {
+    e.stopPropagation();
+    const productToAdd = findInArray(idProductToAdd, menu);
+    handleAddToBasket(productToAdd);
   };
 
   // AFFICHAGE (RENDER)
@@ -70,6 +79,7 @@ export default function Menu() {
             hasDeleteButton={isAdminMode}
             onDelete={(e) => handleCardDelete(e, id)}
             onClick={() => handleClick(id)}
+            onAdd={(e) => handleAddButton(e, id)}
             isHoverable={isAdminMode}
             isSelected={checkIfProductIsClicked(id, productSelected.id)}
           />

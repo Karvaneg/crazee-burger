@@ -12,6 +12,7 @@ export default function Card({
   hasDeleteButton,
   onDelete,
   onClick,
+  onAdd,
   isHoverable,
   isSelected,
 }) {
@@ -40,7 +41,7 @@ export default function Card({
                 aria-label="add-button"
                 label={"Ajouter"}
                 version="primary"
-                onClick={(e) => e.stopPropagation()}
+                onClick={onAdd}
               />
             </div>
           </div>
