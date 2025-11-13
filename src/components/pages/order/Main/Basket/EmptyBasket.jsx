@@ -6,7 +6,6 @@ export default function EmptyBasket() {
 }
 
 const EmptyBasketStyled = styled.div`
-  // overflow-y: scroll;
   color: ${theme.colors.greyBlue};
   font-weight: ${theme.fonts.weights.regular};
   font-size: ${theme.fonts.size.P4};

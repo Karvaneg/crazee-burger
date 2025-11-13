@@ -19,7 +19,7 @@ export default function Basket() {
         <Total amountToPay={formatPrice(0)} />
       </header>
 
-      {isBasketEmpty ? <EmptyBasket /> : <BasketProducts />}
+      {isBasketEmpty ? <EmptyBasket /> : <BasketProducts basket={basket} />}
 
       <Footer />
     </BasketStyled>
