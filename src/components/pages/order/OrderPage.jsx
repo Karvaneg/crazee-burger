@@ -7,6 +7,7 @@ import { useRef, useState } from "react";
 import OrderContext from "../../../context/OrderContext";
 import { EMPTY_PRODUCT } from "../../../enums/product";
 import { useMenu } from "../../../hooks/useMenu";
+import { useBasket } from "../../../hooks/useBasket";
 
 export default function OrderPage() {
   // STATE
@@ -28,6 +29,9 @@ export default function OrderPage() {
     resetMenu,
   } = useMenu();
 
+  const { basket } = useBasket();
+
+  // CONTEXT VALUE
   const OrderContextValue = {
     isAdminMode,
     setIsAdminMode,
@@ -45,6 +49,7 @@ export default function OrderPage() {
     newProduct,
     setNewProduct,
     titleEditRef,
+    basket,
   };
 
   // AFFICHAGE (RENDER)
