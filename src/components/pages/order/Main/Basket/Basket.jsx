@@ -7,15 +7,18 @@ import { useContext } from "react";
 import OrderContext from "../../../../../context/OrderContext";
 import EmptyBasket from "./EmptyBasket";
 import BasketProducts from "./BasketProducts";
+import { useBasketSum } from "../../../../../hooks/useBasketSum";
 
 export default function Basket() {
   const { basket } = useContext(OrderContext);
 
   const isBasketEmpty = basket.length === 0;
 
-  const sumToPay = basket.reduce((total, basketProduct) => {
-    return total + basketProduct.price * basketProduct.quantity;
-  }, 0);
+  // const sumToPay = basket.reduce((total, basketProduct) => {
+  //   return total + basketProduct.price * basketProduct.quantity;
+  // }, 0);
+
+  const sumToPay = useBasketSum(basket);
 
   return (
     <BasketStyled>
