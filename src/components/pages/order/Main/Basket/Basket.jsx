@@ -14,10 +14,6 @@ export default function Basket() {
 
   const isBasketEmpty = basket.length === 0;
 
-  // const sumToPay = basket.reduce((total, basketProduct) => {
-  //   return total + basketProduct.price * basketProduct.quantity;
-  // }, 0);
-
   const sumToPay = useBasketSum(basket);
 
   return (
