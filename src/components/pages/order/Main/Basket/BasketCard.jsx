@@ -13,7 +13,7 @@ export default function BasketCard({
   onDelete,
 }) {
   return (
-    <BasketCardStyled className={className} isAdminMode={isAdminMode}>
+    <BasketCardStyled className={className} $isAdminMode={isAdminMode}>
       <div className="delete-button" onClick={onDelete}>
         <MdDeleteForever className="icon" />
       </div>
@@ -36,8 +36,8 @@ export default function BasketCard({
 }
 
 const BasketCardStyled = styled.div`
-  cursor: ${({ isAdminMode }) => (isAdminMode ? "pointer" : "auto")};
-  /* border: 1px solid red; */
+  cursor: ${({ $isAdminMode }) => ($isAdminMode ? "pointer" : "auto")};
+
   box-sizing: border-box;
   height: 86px;
   padding: 0.5em 0.5em 0.5em 1em;
@@ -53,7 +53,7 @@ const BasketCardStyled = styled.div`
   .image {
     box-sizing: border-box;
     height: 70px;
-    /* border: 1px solid red; */
+
     img {
       padding: 5px;
       box-sizing: border-box;
@@ -66,8 +66,6 @@ const BasketCardStyled = styled.div`
   .text-info {
     user-select: none;
     box-sizing: border-box;
-    /* background: green; */
-    /* border: 1px solid green; */
     display: grid;
     grid-template-columns: 70% 1fr;
     font-size: ${theme.fonts.size.P0};
@@ -98,7 +96,6 @@ const BasketCardStyled = styled.div`
       }
 
       .price {
-        /* background: blue; */
         font-size: ${theme.fonts.size.SM};
         font-weight: ${theme.fonts.weights.medium};
         font-family: ${theme.fonts.families.openSans};
@@ -108,8 +105,6 @@ const BasketCardStyled = styled.div`
 
     .quantity {
       box-sizing: border-box;
-      /* border: 1px solid lightblue; */
-      /* background: lightblue; */
       font-weight: ${theme.fonts.weights.medium};
       font-family: ${theme.fonts.families.openSans};
       display: flex;
@@ -126,9 +121,8 @@ const BasketCardStyled = styled.div`
   }
 
   /* hover de la card */
-  :hover {
+  &:hover {
     .delete-button {
-      /* border: 1px solid red; */
       border: none;
       box-sizing: border-box;
       position: absolute;
@@ -152,11 +146,11 @@ const BasketCardStyled = styled.div`
       }
 
       /* behaviour on delete-button hover */
-      :hover {
+      &:hover {
         .icon {
           color: ${theme.colors.dark};
         }
-        :active {
+        &:active {
           .icon {
             color: ${theme.colors.white};
           }
