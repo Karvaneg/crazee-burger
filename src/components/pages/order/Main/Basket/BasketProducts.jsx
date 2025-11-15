@@ -37,6 +37,10 @@ const BasketProductsStyled = styled.div`
   display: flex;
   flex-direction: column;
   overflow-y: scroll;
+  scrollbar-color: transparent transparent;
+  &:hover {
+    scrollbar-color: initial;
+  }
 
   .basket-card {
     margin: 10px 16px;
