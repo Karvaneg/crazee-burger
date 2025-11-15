@@ -40,5 +40,11 @@ export const useBasket = () => {
     });
   };
 
-  return { basket, handleAddToBasket };
+  const handleDeleteBasketProduct = (idBasketProduct) => {
+    setBasket((prevBasket) => {
+      return prevBasket.filter((p) => p.id !== idBasketProduct);
+    });
+  };
+
+  return { basket, handleAddToBasket, handleDeleteBasketProduct };
 };

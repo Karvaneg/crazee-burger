@@ -29,7 +29,7 @@ export default function OrderPage() {
     resetMenu,
   } = useMenu();
 
-  const { basket, handleAddToBasket } = useBasket();
+  const { basket, handleAddToBasket, handleDeleteBasketProduct } = useBasket();
 
   // CONTEXT VALUE
   const OrderContextValue = {
@@ -51,6 +51,7 @@ export default function OrderPage() {
     titleEditRef,
     basket,
     handleAddToBasket,
+    handleDeleteBasketProduct,
   };
 
   // AFFICHAGE (RENDER)

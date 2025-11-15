@@ -10,7 +10,8 @@ import BasketProducts from "./BasketProducts";
 import { useBasketSum } from "../../../../../hooks/useBasketSum";
 
 export default function Basket() {
-  const { basket } = useContext(OrderContext);
+  const { basket, isAdminMode, handleDeleteBasketProduct } =
+    useContext(OrderContext);
 
   const isBasketEmpty = basket.length === 0;
 
@@ -22,7 +23,15 @@ export default function Basket() {
         <Total amountToPay={formatPrice(sumToPay)} />
       </header>
 
-      {isBasketEmpty ? <EmptyBasket /> : <BasketProducts basket={basket} />}
+      {isBasketEmpty ? (
+        <EmptyBasket />
+      ) : (
+        <BasketProducts
+          basket={basket}
+          isAdminMode={isAdminMode}
+          handleDeleteBasketProduct={handleDeleteBasketProduct}
+        />
+      )}
 
       <Footer />
     </BasketStyled>
