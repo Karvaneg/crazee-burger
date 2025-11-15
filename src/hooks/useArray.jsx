@@ -29,6 +29,10 @@ export function useArray(initial = []) {
     setArray((prev) => [...prev, item]);
   }, []);
 
+  const unshift = useCallback((item) => {
+    setArray((prev) => [item, ...prev]);
+  }, []);
+
   const clear = useCallback(() => {
     setArray([]);
   }, []);
@@ -57,6 +61,7 @@ export function useArray(initial = []) {
     array,
     setAll,
     push,
+    unshift,
     clear,
     removeByIndex,
     removeById,
