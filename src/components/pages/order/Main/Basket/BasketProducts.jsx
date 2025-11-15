@@ -1,13 +1,35 @@
 import styled from "styled-components";
 import BasketCard from "./BasketCard";
 import { IMAGE_COMING_SOON } from "../../../../../enums/product";
+import OrderContext from "../../../../../context/OrderContext";
+import { useContext } from "react";
+import { findInArray } from "../../../../../utils/array";
 
-export default function BasketProducts({
-  basket,
-  isAdminMode,
-  handleDeleteBasketProduct,
-}) {
-  const handleOnDelete = (id) => {
+export default function BasketProducts() {
+  const {
+    basket,
+    menu,
+    isAdminMode,
+    handleDeleteBasketProduct,
+    productSelected,
+    setProductSelected,
+    titleEditRef,
+    setIsCollapsed,
+    setCurrentTabSelected,
+  } = useContext(OrderContext);
+
+  const handleClick = async (idBasketProduct) => {
+    if (!isAdminMode) return;
+    console.log("Click on basket product with id :", idBasketProduct);
+    await setIsCollapsed(false);
+    await setCurrentTabSelected("edit");
+    const productClickedOn = findInArray(idBasketProduct, menu);
+    await setProductSelected(productClickedOn);
+    titleEditRef.current.focus();
+  };
+
+  const handleOnDelete = (e, id) => {
+    e.stopPropagation();
     console.log("Delete product with id :", id);
     handleDeleteBasketProduct(id);
   };
@@ -23,8 +45,10 @@ export default function BasketProducts({
                 ? basketProduct.imageSource
                 : IMAGE_COMING_SOON
             }
-            onDelete={() => handleOnDelete(basketProduct.id)}
+            onDelete={(e) => handleOnDelete(e, basketProduct.id)}
+            onClick={() => handleClick(basketProduct.id)}
             isAdminMode={isAdminMode}
+            isSelected={productSelected?.id === basketProduct.id}
           />
         </div>
       ))}
