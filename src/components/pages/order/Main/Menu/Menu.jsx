@@ -21,6 +21,7 @@ export default function Menu() {
     setCurrentTabSelected,
     titleEditRef,
     handleAddToBasket,
+    handleDeleteBasketProduct,
   } = useContext(OrderContext);
 
   // STATE
@@ -43,6 +44,7 @@ export default function Menu() {
   const handleCardDelete = (e, idProductToDelete) => {
     e.stopPropagation();
     handleDeleteProduct(idProductToDelete);
+    handleDeleteBasketProduct(idProductToDelete);
     idProductToDelete === productSelected.id &&
       setProductSelected(EMPTY_PRODUCT); // vide le panneau d'édition
   };
