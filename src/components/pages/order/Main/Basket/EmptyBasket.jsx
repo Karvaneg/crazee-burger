@@ -1,17 +1,11 @@
 import styled from "styled-components";
 import { theme } from "../../../../../theme";
 
-export default function BasketBody() {
-  return (
-    <BasketBodyStyled>
-      {/* Basket items will be rendered here */}
-      Votre commande est vide.
-    </BasketBodyStyled>
-  );
+export default function EmptyBasket() {
+  return <EmptyBasketStyled>Votre commande est vide.</EmptyBasketStyled>;
 }
 
-const BasketBodyStyled = styled.div`
-  // overflow-y: scroll;
+const EmptyBasketStyled = styled.div`
   color: ${theme.colors.greyBlue};
   font-weight: ${theme.fonts.weights.regular};
   font-size: ${theme.fonts.size.P4};

@@ -3,16 +3,35 @@ import { theme } from "../../../../../theme";
 import Total from "./Total";
 import { formatPrice } from "../../../../../utils/maths";
 import Footer from "./Footer";
-import BasketBody from "./BasketBody";
+import { useContext } from "react";
+import OrderContext from "../../../../../context/OrderContext";
+import EmptyBasket from "./EmptyBasket";
+import BasketProducts from "./BasketProducts";
+import { useBasketSum } from "../../../../../hooks/useBasketSum";
 
 export default function Basket() {
+  const { basket, isAdminMode, handleDeleteBasketProduct } =
+    useContext(OrderContext);
+
+  const isBasketEmpty = basket.length === 0;
+
+  const sumToPay = useBasketSum(basket);
+
   return (
     <BasketStyled>
       <header>
-        <Total amountToPay={formatPrice(0)} />
+        <Total amountToPay={formatPrice(sumToPay)} />
       </header>
 
-      <BasketBody />
+      {isBasketEmpty ? (
+        <EmptyBasket />
+      ) : (
+        <BasketProducts
+          basket={basket}
+          isAdminMode={isAdminMode}
+          handleDeleteBasketProduct={handleDeleteBasketProduct}
+        />
+      )}
 
       <Footer />
     </BasketStyled>
@@ -25,7 +44,7 @@ const BasketStyled = styled.div`
   background: ${theme.colors.background_white};
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  height: 85vh;
   font-family: ${theme.fonts.families.stylish};
 
   header {
