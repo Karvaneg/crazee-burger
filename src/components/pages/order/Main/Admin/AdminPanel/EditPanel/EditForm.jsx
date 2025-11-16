@@ -9,6 +9,7 @@ export default function EditForm() {
     productSelected,
     setProductSelected,
     handleUpdateProduct,
+    handleUpdateBasketProduct,
     titleEditRef,
   } = useContext(OrderContext);
 
@@ -22,6 +23,7 @@ export default function EditForm() {
 
     setProductSelected(productBeingUpdated); // met à jour le formulaire
     handleUpdateProduct(productBeingUpdated); // met à jour le menu
+    handleUpdateBasketProduct(productBeingUpdated); // met à jour le panier
   };
 
   // AFFICHAGE (RENDER)

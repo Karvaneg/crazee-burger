@@ -30,6 +30,17 @@ export const useBasket = () => {
     }
   };
 
+  const handleUpdateBasketProduct = (updatedProduct) => {
+    const existing = basket.find((p) => p.id === updatedProduct.id);
+    if (!existing) return;
+
+    // Fusion : on garde la quantité actuelle
+    updateById(updatedProduct.id, {
+      ...updatedProduct,
+      quantity: existing.quantity,
+    });
+  };
+
   /**
    * Supprime un produit du panier par son id.
    */
@@ -51,6 +62,7 @@ export const useBasket = () => {
   return {
     basket,
     handleAddToBasket,
+    handleUpdateBasketProduct,
     handleDeleteBasketProduct,
     getTotal,
     getTotalItems,
