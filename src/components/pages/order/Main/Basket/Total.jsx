@@ -1,11 +1,19 @@
 import styled from "styled-components";
 import { theme } from "../../../../../theme";
 
-export default function Total({ amountToPay }) {
+export default function Total({ amountToPay, totalQuantityProduct }) {
   return (
     <TotalStyled>
-      <span className="total">Total</span>
-      <span className="amount">{amountToPay}</span>
+      <div>
+        <span className="total">TOTAL </span>
+        <span className="quantity">
+          ({totalQuantityProduct}{" "}
+          {totalQuantityProduct > 1 ? "articles" : "article"})
+        </span>
+      </div>
+      <div>
+        <span className="amount">{amountToPay}</span>
+      </div>
     </TotalStyled>
   );
 }
@@ -19,4 +27,7 @@ const TotalStyled = styled.div`
   font-size: ${theme.fonts.size.P4};
   font-family: ${theme.fonts.families.stylish};
   letter-spacing: 2px;
+  .quantity {
+    font-size: ${theme.fonts.size.P3};
+  }
 `;

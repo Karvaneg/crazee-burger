@@ -57,7 +57,8 @@ export const useBasket = () => {
   /**
    * Nombre total d'articles dans le panier
    */
-  const getTotalItems = () => basket.reduce((sum, p) => sum + p.quantity, 0);
+  const getTotalItemsInBasket = () =>
+    basket.reduce((sum, p) => sum + p.quantity, 0);
 
   return {
     basket,
@@ -65,6 +66,6 @@ export const useBasket = () => {
     handleUpdateBasketProduct,
     handleDeleteBasketProduct,
     getTotal,
-    getTotalItems,
+    getTotalItemsInBasket,
   };
 };
