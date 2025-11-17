@@ -20,7 +20,7 @@ export default function BasketProducts() {
 
   const handleClick = async (idBasketProduct) => {
     if (!isAdminMode) return;
-    console.log("Click on basket product with id :", idBasketProduct);
+
     await setIsCollapsed(false);
     await setCurrentTabSelected("edit");
     const productClickedOn = findInArray(idBasketProduct, menu);
@@ -30,28 +30,33 @@ export default function BasketProducts() {
 
   const handleOnDelete = (e, id) => {
     e.stopPropagation();
-    console.log("Delete product with id :", id);
+
     handleDeleteBasketProduct(id);
   };
 
   return (
     <BasketProductsStyled>
-      {basket.map((basketProduct) => (
-        <div className="basket-card" key={basketProduct.id}>
-          <BasketCard
-            {...basketProduct}
-            imageSource={
-              basketProduct.imageSource
-                ? basketProduct.imageSource
-                : IMAGE_COMING_SOON
-            }
-            onDelete={(e) => handleOnDelete(e, basketProduct.id)}
-            onClick={() => handleClick(basketProduct.id)}
-            isClickable={isAdminMode}
-            isSelected={productSelected?.id === basketProduct.id}
-          />
-        </div>
-      ))}
+      {basket.map((basketProduct) => {
+        const menuProduct = menu.find((p) => p.id === basketProduct.id);
+
+        return (
+          <div className="basket-card" key={basketProduct.id}>
+            <BasketCard
+              {...menuProduct}
+              quantity={basketProduct.quantity}
+              imageSource={
+                menuProduct.imageSource
+                  ? menuProduct.imageSource
+                  : IMAGE_COMING_SOON
+              }
+              onDelete={(e) => handleOnDelete(e, basketProduct.id)}
+              onClick={() => handleClick(basketProduct.id)}
+              isClickable={isAdminMode}
+              isSelected={productSelected?.id === basketProduct.id}
+            />
+          </div>
+        );
+      })}
     </BasketProductsStyled>
   );
 }
