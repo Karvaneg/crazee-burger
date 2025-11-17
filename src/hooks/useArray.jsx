@@ -19,6 +19,8 @@ export function useArray(initial = []) {
 
   const exists = useCallback((predicate) => array.some(predicate), [array]);
 
+  const isEmpty = useCallback(() => array.length === 0, [array]);
+
   // --- MUTATIONS (SETTERS +++)---------------------------------------------------------
 
   const setAll = useCallback((newArray) => {
@@ -71,5 +73,6 @@ export function useArray(initial = []) {
     findIndex,
     exists,
     count,
+    isEmpty,
   };
 }

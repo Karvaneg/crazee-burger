@@ -12,6 +12,7 @@ export const useBasket = () => {
     unshift,
     updateById,
     removeById,
+    isEmpty,
   } = useArray(fakeBasket.EMPTY);
 
   /**
@@ -67,5 +68,6 @@ export const useBasket = () => {
     handleDeleteBasketProduct,
     getTotal,
     getTotalItemsInBasket,
+    isEmpty,
   };
 };

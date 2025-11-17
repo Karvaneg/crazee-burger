@@ -29,4 +29,5 @@ export default createContext({
   handleUpdateBasketProduct: () => {},
   handleDeleteBasketProduct: () => {},
   getTotalItemsInBasket: () => {},
+  isEmpty: () => {},
 });

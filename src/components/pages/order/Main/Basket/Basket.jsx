@@ -15,9 +15,8 @@ export default function Basket() {
     isAdminMode,
     handleDeleteBasketProduct,
     getTotalItemsInBasket,
+    isEmpty,
   } = useContext(OrderContext);
-
-  const isBasketEmpty = basket.length === 0;
 
   const sumToPay = useBasketSum(basket);
 
@@ -30,7 +29,7 @@ export default function Basket() {
         />
       </header>
 
-      {isBasketEmpty ? (
+      {isEmpty() ? (
         <EmptyBasket />
       ) : (
         <BasketProducts

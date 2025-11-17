@@ -35,6 +35,7 @@ export default function OrderPage() {
     handleDeleteBasketProduct,
     handleUpdateBasketProduct,
     getTotalItemsInBasket,
+    isEmpty,
   } = useBasket();
 
   // CONTEXT VALUE
@@ -60,6 +61,7 @@ export default function OrderPage() {
     handleUpdateBasketProduct,
     handleDeleteBasketProduct,
     getTotalItemsInBasket,
+    isEmpty,
   };
 
   // AFFICHAGE (RENDER)
