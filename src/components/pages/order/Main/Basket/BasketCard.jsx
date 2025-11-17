@@ -9,7 +9,7 @@ export default function BasketCard({
   price,
   quantity,
   imageSource,
-  isAdminMode,
+  isClickable,
   onDelete,
   onClick,
   isSelected,
@@ -19,7 +19,7 @@ export default function BasketCard({
       className={clsx({
         "is-selected": isSelected,
       })}
-      $isAdminMode={isAdminMode}
+      $isClickable={isClickable}
       $isSelected={isSelected}
       onClick={onClick}
     >
@@ -51,7 +51,7 @@ export default function BasketCard({
 const BasketCardStyled = styled.div.withConfig({
   shouldForwardProp: (prop) => !["$isSelected"].includes(prop),
 })`
-  cursor: ${({ $isAdminMode }) => ($isAdminMode ? "pointer" : "auto")};
+  cursor: ${({ $isClickable }) => ($isClickable ? "pointer" : "auto")};
 
   box-sizing: border-box;
   height: 86px;

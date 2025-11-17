@@ -47,7 +47,7 @@ export default function BasketProducts() {
             }
             onDelete={(e) => handleOnDelete(e, basketProduct.id)}
             onClick={() => handleClick(basketProduct.id)}
-            isAdminMode={isAdminMode}
+            isClickable={isAdminMode}
             isSelected={productSelected?.id === basketProduct.id}
           />
         </div>
