@@ -1,50 +1,65 @@
-import { useState } from "react";
+import { useArray } from "./useArray";
 import { fakeBasket } from "../fakeData/fakeBasket";
+import { useMemo } from "react";
 
 /**
  * Hook métier gérant l'état du panier.
- * Respecte strictement le principe d'immutabilité :
- * - jamais de mutation directe du state
- * - chaque update crée un nouveau tableau
- * - chaque élément modifié est recréé
+ * Basé sur useArray pour la gestion immuable et déclarative.
  */
 export const useBasket = () => {
-  const [basket, setBasket] = useState(fakeBasket.EMPTY);
+  // initialisation avec ton fakeBasket
+  const {
+    array: basket,
+    unshift,
+    updateById,
+    removeById,
+    isEmpty,
+    findById,
+  } = useArray(fakeBasket.EMPTY);
 
   /**
    * Ajoute un produit au panier.
-   * Si le produit est nouveau : ajout avec quantité = 1
-   * S'il existe déjà : incrément de la quantité
+   * Si le produit existe déjà, incrémente sa quantité.
    */
   const handleAddToBasket = (productToAdd) => {
-    setBasket((prevBasket) => {
-      // Recherche d'une éventuelle entrée existante
-      const existingProduct = prevBasket.find((p) => p.id === productToAdd.id);
+    const existing = findById(productToAdd.id);
 
-      // 🔹 Cas 1 — Produit absent : on crée un nouvel objet + un nouveau tableau
-      if (!existingProduct) {
-        return [
-          { ...productToAdd, quantity: 1 }, // nouvel objet
-          ...prevBasket, // nouvelle copie de tableau
-        ];
-      }
-
-      // 🔹 Cas 2 — Produit déjà présent : on retourne un NOUVEAU tableau,
-      //            en recréant uniquement l'objet modifié.
-      return prevBasket.map(
-        (p) =>
-          p.id === productToAdd.id
-            ? { ...p, quantity: p.quantity + 1 } // nouvel objet modifié
-            : p // objet inchangé (référence conservée)
-      );
-    });
+    if (existing) {
+      // on recrée uniquement le produit modifié
+      updateById(existing.id, { quantity: existing.quantity + 1 });
+    } else {
+      // on ajoute un nouveau produit avec quantity = 1, au début du panier
+      unshift({ ...productToAdd, quantity: 1 });
+    }
   };
+  //   // Fusion : on garde la quantité actuelle
+  //   updateById(updatedProduct.id, {
+  //     ...updatedProduct,
+  //     quantity: existing.quantity,
+  //   });
+  // };
 
+  /**
+   * Supprime un produit du panier par son id.
+   */
   const handleDeleteBasketProduct = (idBasketProduct) => {
-    setBasket((prevBasket) => {
-      return prevBasket.filter((p) => p.id !== idBasketProduct);
-    });
+    removeById(idBasketProduct);
   };
 
-  return { basket, handleAddToBasket, handleDeleteBasketProduct };
+  /**
+   * Nombre total d'articles dans le panier
+   */
+  const getTotalItemsInBasket = () =>
+    basket.reduce((sum, p) => sum + p.quantity, 0);
+
+  return useMemo(
+    () => ({
+      basket,
+      handleAddToBasket,
+      handleDeleteBasketProduct,
+      getTotalItemsInBasket,
+      isEmpty,
+    }),
+    [basket]
+  );
 };
