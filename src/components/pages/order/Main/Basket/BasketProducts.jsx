@@ -18,7 +18,7 @@ export default function BasketProducts() {
     setCurrentTabSelected,
   } = useContext(OrderContext);
 
-  const handleClick = async (idBasketProduct) => {
+  const handleOnClick = async (idBasketProduct) => {
     if (!isAdminMode) return;
 
     await setIsCollapsed(false);
@@ -30,7 +30,6 @@ export default function BasketProducts() {
 
   const handleOnDelete = (e, id) => {
     e.stopPropagation();
-
     handleDeleteBasketProduct(id);
   };
 
@@ -50,7 +49,7 @@ export default function BasketProducts() {
                   : IMAGE_COMING_SOON
               }
               onDelete={(e) => handleOnDelete(e, basketProduct.id)}
-              onClick={() => handleClick(basketProduct.id)}
+              onClick={() => handleOnClick(basketProduct.id)}
               isClickable={isAdminMode}
               isSelected={productSelected?.id === basketProduct.id}
             />

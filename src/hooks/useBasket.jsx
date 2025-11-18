@@ -1,5 +1,6 @@
 import { useArray } from "./useArray";
 import { fakeBasket } from "../fakeData/fakeBasket";
+import { useMemo } from "react";
 
 /**
  * Hook métier gérant l'état du panier.
@@ -13,6 +14,7 @@ export const useBasket = () => {
     updateById,
     removeById,
     isEmpty,
+    findById,
   } = useArray(fakeBasket.EMPTY);
 
   /**
@@ -20,7 +22,7 @@ export const useBasket = () => {
    * Si le produit existe déjà, incrémente sa quantité.
    */
   const handleAddToBasket = (productToAdd) => {
-    const existing = basket.find((p) => p.id === productToAdd.id);
+    const existing = findById(productToAdd.id);
 
     if (existing) {
       // on recrée uniquement le produit modifié
@@ -30,17 +32,12 @@ export const useBasket = () => {
       unshift({ ...productToAdd, quantity: 1 });
     }
   };
-
-  const handleUpdateBasketProduct = (updatedProduct) => {
-    const existing = basket.find((p) => p.id === updatedProduct.id);
-    if (!existing) return;
-
-    // Fusion : on garde la quantité actuelle
-    updateById(updatedProduct.id, {
-      ...updatedProduct,
-      quantity: existing.quantity,
-    });
-  };
+  //   // Fusion : on garde la quantité actuelle
+  //   updateById(updatedProduct.id, {
+  //     ...updatedProduct,
+  //     quantity: existing.quantity,
+  //   });
+  // };
 
   /**
    * Supprime un produit du panier par son id.
@@ -50,24 +47,19 @@ export const useBasket = () => {
   };
 
   /**
-   * Calcul du total du panier
-   */
-  const getTotal = () =>
-    basket.reduce((total, p) => total + p.price * p.quantity, 0);
-
-  /**
    * Nombre total d'articles dans le panier
    */
   const getTotalItemsInBasket = () =>
     basket.reduce((sum, p) => sum + p.quantity, 0);
 
-  return {
-    basket,
-    handleAddToBasket,
-    handleUpdateBasketProduct,
-    handleDeleteBasketProduct,
-    getTotal,
-    getTotalItemsInBasket,
-    isEmpty,
-  };
+  return useMemo(
+    () => ({
+      basket,
+      handleAddToBasket,
+      handleDeleteBasketProduct,
+      getTotalItemsInBasket,
+      isEmpty,
+    }),
+    [basket]
+  );
 };

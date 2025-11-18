@@ -33,7 +33,6 @@ export default function OrderPage() {
     basket,
     handleAddToBasket,
     handleDeleteBasketProduct,
-    handleUpdateBasketProduct,
     getTotalItemsInBasket,
     isEmpty,
   } = useBasket();
@@ -58,7 +57,6 @@ export default function OrderPage() {
     titleEditRef,
     basket,
     handleAddToBasket,
-    handleUpdateBasketProduct,
     handleDeleteBasketProduct,
     getTotalItemsInBasket,
     isEmpty,
