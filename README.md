@@ -1,7 +1,5 @@
 # <img src="public/images/img_readme/logo-orange.png" alt="Logo du projet Crazee Burger" width="50" height="auto"> Crazee Burger – Application de commande en temps réel
 
----
-
 ## 🚀 Aperçu du projet
 
 **Crazee Burger** est une application web moderne développée en **React**, permettant aux utilisateurs de :
