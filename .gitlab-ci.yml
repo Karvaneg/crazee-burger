@@ -24,24 +24,18 @@ variables:
 # Job de mirroring optimisé
 mirror_to_github:
   stage: mirror
-  image: alpine:latest
+  image: debian:stable # Changer alpine → debian pour support ED25519
   before_script:
-    # Installer Git et SSH
-    - apk add --no-cache git openssh
-    # Préparer le dossier SSH
+    - apt-get update && apt-get install -y git openssh-client
     - mkdir -p ~/.ssh
-    # Ajouter la clé privée depuis la variable GitLab
     - echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_ed25519
     - chmod 600 ~/.ssh/id_ed25519
     - eval "$(ssh-agent -s)"
     - ssh-add ~/.ssh/id_ed25519
-    # Ajouter GitHub aux known_hosts pour éviter la confirmation interactive
     - ssh-keyscan github.com >> ~/.ssh/known_hosts
   script:
-    # Ajouter la remote GitHub si elle n'existe pas déjà
     - git remote remove github || true
     - git remote add github git@github.com:Karvaneg/crazee-burger.git
-    # Pousser toutes les branches et tous les tags
     - git push github --all
     - git push github --tags
   only:
