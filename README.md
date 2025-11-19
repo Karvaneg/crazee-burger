@@ -187,6 +187,6 @@ Ce dépôt GitHub est un **miroir en lecture** seule du vrai projet hébergé su
 
 ## 👩‍💻 Auteur
 
-**Karvaneg** — Développeuse Web Fullstack (React, Twig, Symfony, NodeJS, Express, Docker…)
+**Karvaneg** — Développeuse Web Fullstack (React, Twig, Symfony, NodeJS, Express, Docker, DBeaver, MongoDB,…)
 
 [![LinkedIn](https://img.shields.io/badge/LINKEDIN-KARVANEG-blue?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/marielecarvennec/)
