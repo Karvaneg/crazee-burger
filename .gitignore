@@ -7,6 +7,10 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
+# SSH Keys
+id_rsa
+id_rsa.pub
+
 # Dependency directories
 node_modules/
 package-lock.json
