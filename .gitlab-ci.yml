@@ -28,18 +28,22 @@ mirror_to_github:
   before_script:
     - apt-get update && apt-get install -y git openssh-client
     - mkdir -p ~/.ssh
-    # ==> utilisation de la clé RSA
     - echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
     - chmod 600 ~/.ssh/id_rsa
     - ssh-keyscan github.com >> ~/.ssh/known_hosts
-  script:
-    # on force le push sur main
-    - git status
-    - git branch -a
-    - git fetch github || true
+
+    # IMPORTANT : GitLab CI ne crée pas la branche main → on la recrée
+    - git config --global --add safe.directory "$CI_PROJECT_DIR"
+    - git fetch origin main
+    - git checkout -B main origin/main
+
+    # Remote GitHub
     - git remote remove github || true
     - git remote add github git@github.com:Karvaneg/crazee-burger.git
+
+  script:
     - GIT_SSH_COMMAND='ssh -i ~/.ssh/id_rsa -o StrictHostKeyChecking=no' git push github main --force
     - GIT_SSH_COMMAND='ssh -i ~/.ssh/id_rsa -o StrictHostKeyChecking=no' git push github --tags --force
+
   only:
     - main
